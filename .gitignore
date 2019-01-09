@@ -6,6 +6,7 @@ Login_v3
 
 # compiled output
 
+/API/
 /tmp
 /out-tsc
 
