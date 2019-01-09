@@ -1,0 +1,188 @@
+<mat-card class=card>
+	<mat-card-title>
+		Check-in!
+	</mat-card-title>
+	<mat-card-subtitle>
+	</mat-card-subtitle>
+	Please answer as much as you can!
+</mat-card>
+
+<div id="sp-10"></div>
+
+<mat-card class=card>
+	<mat-card-title>
+		Section 1
+	</mat-card-title>
+	<mat-card-subtitle>
+		Quick summary about yourself
+	</mat-card-subtitle>
+	<mat-form-field>
+		How has your mood been these past 24hrs?
+		<input matInput>
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		What do think of your physical condition?
+		<input matInput>
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		Core Energy State
+		<select matNativeControl required>
+			<option value="Joy">Joy</option>
+			<option value="Anger">Anger</option>
+			<option value="Sadness">Sadness</option>
+		</select>
+	</mat-form-field>
+	<br>
+	Mental clarity:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+	"Happy to be me"
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+	Heart connection:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+</mat-card>
+
+<div id="sp-10"></div>
+
+<mat-card class=card>
+	<mat-card-title>
+		Section 2
+	</mat-card-title>
+	<br>
+	<mat-card-subtitle>
+		Assignment & Commitments Integrity Check
+	</mat-card-subtitle>
+	Commitments:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+	Creation Question:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+	Mind Support:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+	Body's Support:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+	Top Priority:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+	Personal Promise:
+	<mat-slider thumbLabel tickInterval="1000" min="1" max="100"></mat-slider>
+	<br>
+</mat-card>
+
+<div id="sp-10"></div>
+
+<mat-card class=card>
+	<mat-card-title>
+		Section 3
+	</mat-card-title>
+	<mat-card-subtitle>
+		What is important to share?
+		<br>
+		What opened up?(since the last session)
+	</mat-card-subtitle>
+	<textarea placeholder="A."></textarea>
+	<textarea placeholder="B."></textarea>
+	<textarea placeholder="C."></textarea>
+
+	<mat-checkbox (click)="acdisplay = !acdisplay">AC Module Introduced?</mat-checkbox>
+	<div id="sp-10"></div>
+	<div *ngIf='acdisplay'>
+		<mat-form-field>
+			<input matInput placeholder="AC Module Introduced:" style="display: block;">
+		</mat-form-field>
+	</div>
+	<br>
+	<div class=card>
+		<br>
+		What shift in consciousness would you like to create?
+		<textarea placeholder="From:"></textarea>
+		<textarea placeholder="To:"></textarea>
+	</div>
+	<br>
+</mat-card>
+
+<div id="sp"></div>
+
+<mat-card class=card>
+	<mat-card-title>
+		Section 4
+	</mat-card-title>
+	<mat-card-subtitle>
+		Couching Session
+	</mat-card-subtitle>
+	<mat-card>
+		What results do you want to take away from todays session?
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"></textarea>
+	</mat-card>
+	<br>
+	<mat-card>
+		Couching Content:
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"></textarea>
+	</mat-card>
+	<br>
+</mat-card>
+<div id="sp"></div>
+
+<mat-card class=card>
+	<mat-card-title>
+		Section 5
+	</mat-card-title>
+	<mat-card-subtitle>
+		Assignments & Commitments
+		<br>
+		Assignments/Commitments should be IMT and 20% out of the comfort zone
+	</mat-card-subtitle>
+	<mat-card>
+		Creation Question:
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"></textarea>
+	</mat-card>
+	<br>
+	<mat-card>
+		Support for the Mind:
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"></textarea>
+	</mat-card>
+	<br>
+	<mat-card>
+		Support for the Body:
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"></textarea>
+	</mat-card>
+	<br>
+	<mat-card>
+		Top Priority:
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"></textarea>
+	</mat-card>
+	<br>
+	<mat-card>
+		Personal Promise:
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"></textarea>
+	</mat-card>
+	<br>
+</mat-card>
+
+<div id="sp"></div>
+
+<mat-card class=card>
+	<mat-card-title>
+		Finilise & Submit
+	</mat-card-title>
+	<mat-card-subtitle>
+		Review your info then submit
+	</mat-card-subtitle>
+	<br>
+	<mat-card>
+		Is there anything you'd like your coach to hold you accountable for?
+		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"></textarea>
+	</mat-card>
+	<br>
+	<a class="btn btn-primary">
+		Submit
+	</a>
+</mat-card>
+
+<div id=sp-50></div>

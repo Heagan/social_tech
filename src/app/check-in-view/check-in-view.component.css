@@ -1,0 +1,12 @@
+textarea{  
+	display: block;
+	text-align: left;
+	min-width: 200px;
+	width: auto;
+	margin: 50px auto;
+	font-size: auto;
+	border-radius: 6px;
+	box-shadow: 2px 2px 8px rgba(black, .3);
+	border: 20;
+	white-space: nowrap;
+}

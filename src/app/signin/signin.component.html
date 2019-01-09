@@ -1,0 +1,30 @@
+<div class="card" style="max-width:500px; margin:auto" *ngIf="!loading">
+
+	<form style="max-width:500px; margin:auto">
+		<br>
+		<img src="../../assets/sdp/logo/smile-logo-trans-big.png" style="width:100%;">
+		<br>
+		<br>
+
+		<div class="input-container">
+			<i class="fa fa-envelope icon"></i>
+			<input #emailText class="input-field" type="emailText" placeholder="Email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+			 required email>
+		</div>
+
+		<div class="input-container">
+			<i class="fa fa-key icon"></i>
+			<input #passwordText class="input-field" type="password" placeholder="Password" name="psw" required>
+		</div>
+		<div *ngIf="error" >
+			<mat-error>{{error}}</mat-error>
+		</div>
+		<mat-checkbox #check checked=true>Remember me</mat-checkbox>
+		<button type="submit" class="btn" (click)="login(emailText.value, passwordText.value, check.checked)">Log in</button>
+	</form>
+	<br>
+	<div style="background-color:#f1f1f1">
+		<span class="psw">Forgot <a href="#">password?</a></span>
+		<br>
+	</div>
+</div>

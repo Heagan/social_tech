@@ -1,0 +1,17 @@
+<div class="card">
+	<h2>Check-in questions</h2>
+	<textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+	placeholder="Note" (click)="newMessage()">{{message}}</textarea>
+	<button class="btn-primary">Add Note</button>
+	<a matRipple (click)="router.navigateByUrl('checkin')" class="btn btn-primary">Check-in</a>
+</div>
+<div id="sp-10"></div>
+<h2 class="card">Performance</h2>
+<app-graph></app-graph>
+<div id="sp-10"></div>
+<h2 class="card">Todays Activity</h2>
+<div id="sp-10"></div>
+<h2 class="card">Last Accomplished Achievement</h2>
+<div id="sp-10"></div>
+<h2 class="card">Last Accomplished Goal</h2>
+<div id="sp-50"></div>

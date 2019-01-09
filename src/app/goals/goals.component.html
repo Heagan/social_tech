@@ -1,0 +1,57 @@
+<div class="card">
+	<div class="button" [ngClass]="'hidden: isDisabled'" (click)="isDisabled = !isDisabled;">
+		Click me!
+		{{isDisabled}}
+	</div>
+</div>
+
+<div class="card">
+
+	<div class="zoom" (click)="displayAddNewGoalForm = !displayAddNewGoalForm;">
+		<a class="icon">
+			<i class="material-icons md-36">add_circle_outline</i>
+		</a>
+	</div>
+	<strong>New Goal</strong>
+
+	<div *ngIf="displayAddNewGoalForm" class="card">
+		<mat-card>
+			<br>
+			<mat-form-field>
+				<u><strong>Title</strong></u>
+				<input matInput [formControl]="newGoalTitle">
+			</mat-form-field>
+			<br>
+			<mat-form-field>
+				<u><strong>Item</strong></u>
+				<input matInput [formControl]="newGoalItem">
+			</mat-form-field>
+			<br>
+			<br>
+			<mat-error *ngIf="newGoalTitle.invalid || newGoalItem.invalid" style="color: red;">
+				Not enough information!
+			</mat-error>
+		</mat-card>
+		<button class="btn-primary" (click)="addGoal()" [disabled]="newGoalTitle.invalid || newGoalItem.invalid">Add Goal!</button>
+
+	</div>
+</div>
+
+<div id="sp-10"></div>
+
+<div id="sp-10"></div>
+
+<div *ngIf="goals">
+	<div *ngFor="let goal of goals">
+		<div class="card" *ngIf="!goal.goal.parent_goal_id">
+			<button [ngClass]="'collapsible'" (click)="goal.collapse = !goal.collapse" > {{goal.goal.goal_title}}</button>
+			<div *ngIf="goal.collapse">
+				<p *ngFor="let com of getComFromId(goal.goal.goal_id)">
+					{{com.goal.goal_title}}
+				</p>
+			</div>
+		</div>
+		<div id="sp" *ngIf="!goal.goal.parent_goal_id"></div>
+	</div>
+
+</div>

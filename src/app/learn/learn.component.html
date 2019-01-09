@@ -1,0 +1,16 @@
+<mat-grid-list cols="2" rowHeight="2:2">
+	<mat-grid-tile *ngFor="let lcard of learnCards.slice().reverse()" class="card">
+
+		<mat-card style="width:500px; max-width: 90%; height: 500px; max-height: 90%;">
+			<img src={{lcard.picUrl}} alt="John">
+			<br>
+				<a href={{lcard.url}} target="_blank">
+					<u>{{lcard.title}}</u>
+				</a>
+			{{lcard.note}}
+		</mat-card>
+
+	</mat-grid-tile>
+</mat-grid-list>
+
+<div id="sp-50"></div>

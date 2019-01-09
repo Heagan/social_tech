@@ -1,0 +1,17 @@
+<!-- [(ngModel)]='(user | async )' -->
+<mat-card class=card >
+	<img src="assets/pictures/John.jpg" alt="John" style="width:100%">
+	<mat-card-title>
+		{{(user | async )?.data.first_name}} {{(user | async )?.data.last_name}}
+	</mat-card-title>
+	<mat-card-subtitle>
+			CEO, Lvl 5 Weeaboo
+	</mat-card-subtitle>
+	Suffers from crippling depression
+
+
+
+	<br>
+</mat-card>
+
+<div id="sp-50"></div>

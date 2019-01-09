@@ -1,0 +1,18 @@
+<!-- george@test.com -->
+<!-- George -->
+
+<mat-card class="card" style="">
+	<button (click)="mode='signin'">Sign In</button>
+	<div id="sp-10"></div>
+	<button (click)="mode='signup'">Sign Up</button>
+
+<div *ngIf="mode == 'signin'">
+	<app-signin></app-signin>
+</div>
+<div *ngIf="mode == 'signup'">
+	<a href='#'>Request sign up link?</a>
+	<app-signup></app-signup>
+</div>
+</mat-card>
+
+<div id='sp-50'></div>
