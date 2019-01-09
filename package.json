@@ -10,6 +10,10 @@
     "e2e": "ng e2e",
     "postinstall": "ng build --aot"
   },
+  "engines": {
+    "node": "6.11.0",
+    "npm": "3.10.10"
+  },
   "private": true,
   "dependencies": {
     "@angular/animation": "^4.0.0-beta.8",
@@ -50,6 +54,5 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
   }
 }
