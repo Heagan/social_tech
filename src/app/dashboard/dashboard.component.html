@@ -48,11 +48,12 @@
 		</div>
 
 		<div>
-			<a *ngIf="quote" class="button" (click)="newMessage()" style="    width: 100%; background: lime;right: 0; font-size: 24px;">
+			<a *ngIf="quote" class="button g-light" (click)="newMessage()" style="width: 100%;;right: 0; font-size: 24px;">
 				{{(motivMess | async)?.description}}
 			</a>
 			<br>
-			<button class="btn-primary" style="width: 100%;" (click)="quote = !quote"><mat-icon>expand_more</mat-icon></button>
+			<button class="btn-primary" style="width: 100%;" *ngIf="!quote" (click)="quote = !quote"><mat-icon>expand_more</mat-icon></button>
+			<button class="btn-primary" style="width: 100%;" *ngIf="quote" (click)="quote = !quote"><mat-icon>expand_less</mat-icon></button>
 		</div>
 
 

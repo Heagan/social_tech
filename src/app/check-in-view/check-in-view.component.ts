@@ -8,7 +8,8 @@ import { FormControl } from '@angular/forms';
 })
 export class CheckInViewComponent implements OnInit {
 
-	disableSelect = true;
+	public acdisplay = false;
+	public disableSelect = true;
 
 	showText() {
 		this.disableSelect = !this.disableSelect;

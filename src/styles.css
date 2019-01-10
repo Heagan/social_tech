@@ -3,9 +3,9 @@
 #bordering {
 	border: 10px solid transparent;
 	padding: 15px;
-	-webkit-border-image: url("./assets/pictures/27.jpg") 50 round;
-	-o-border-image: url("./assets/pictures/27.jpg") 50 round;
-	border-image: url("./assets/pictures/27.jpg") 50 round;
+	-webkit-border-image: url("./assets/green_border.png") 50 round;
+	-o-border-image: url("./assets/green_border.png") 50 round;
+	border-image: url("./assets/green_border.png") 50 round;
 }
 
 #centre {
@@ -74,6 +74,10 @@
 
 .g-blk {
 	background: linear-gradient(to right bottom, #000000, #7a7a7a)
+}
+
+.g-light {
+	background: linear-gradient(to right bottom, lime, #4fc41e)
 }
 
 .bg-image {
