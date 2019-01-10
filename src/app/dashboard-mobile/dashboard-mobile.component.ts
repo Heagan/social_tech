@@ -4,23 +4,20 @@ import { APIService } from '../api.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { UserFields, MotivMessReturn } from '../models/api-models';
-import { DetailsComponent } from './details/details.component';
 
 @Injectable({
 	providedIn: 'root'
 })
 @Component({
-	selector: 'app-dashboard',
-	templateUrl: './dashboard.component.html',
-	styleUrls: ['./dashboard.component.css']
+	selector: 'app-dashboard-mobile',
+	templateUrl: './dashboard-mobile.component.html',
+	styleUrls: ['./dashboard-mobile.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardMobileComponent implements OnInit {
 
 	user: Observable<UserFields>;
 	motivMess: Observable<MotivMessReturn>;
-	
-	public page = 'home';
-	public quote = false;
+
 	public innerWidth: any;
 	public innerHeight: any;
 
@@ -30,6 +27,7 @@ export class DashboardComponent implements OnInit {
 		this.innerHeight = window.innerHeight;
 	}
 
+	page = 'home';
 	constructor(public api: APIService, public router: Router) {
 	}
 
@@ -39,17 +37,12 @@ export class DashboardComponent implements OnInit {
 	}
 
 	openPage(path: string) {
-		this.quote = false;
 		localStorage.setItem('cur_page', path);
 		this.router.navigateByUrl(path);
 	}
 
 	logout() {
 		localStorage.setItem('logged_in', 'false');
-	}
-
-	newMessage() {
-		this.api.refreshMotivMess();
 	}
 
 }

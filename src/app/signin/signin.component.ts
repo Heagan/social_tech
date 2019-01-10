@@ -12,7 +12,8 @@ import { DefaultReturn, LoginReturnDetails } from '../models/api-models';
 export class SigninComponent implements OnInit {
 
 	error: string;
-	loading: boolean = false;
+	loading: boolean = true;
+	show: boolean = false;
 
 	constructor(private api: APIService, private router: Router) {
 	}
@@ -21,7 +22,7 @@ export class SigninComponent implements OnInit {
 		if (localStorage.getItem('remember_me') == 'true' && localStorage.getItem('logged_in') == "true" && localStorage.getItem('token')) {
 			this.login_with_token(localStorage.getItem('token'));
 		} else {
-			this.loading = false;
+			this.show = true;
 		}
 	}
 

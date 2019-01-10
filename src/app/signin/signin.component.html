@@ -1,4 +1,4 @@
-<div class="card" style="max-width:500px; margin:auto" *ngIf="!loading">
+<div class="card" style="max-width:500px; margin:auto" *ngIf="show">
 
 	<form style="max-width:500px; margin:auto">
 		<br>
@@ -21,6 +21,7 @@
 		</div>
 		<mat-checkbox #check checked=true>Remember me</mat-checkbox>
 		<button type="submit" class="btn" (click)="login(emailText.value, passwordText.value, check.checked)">Log in</button>
+		<mat-progress-spinner [color]="red" mode="indeterminate" *ngIf="loading"></mat-progress-spinner>
 	</form>
 	<br>
 	<div style="background-color:#f1f1f1">

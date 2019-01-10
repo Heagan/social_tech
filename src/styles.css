@@ -1,7 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 #bordering {
-	border: 10px solid transparent;
+	border: 10px transparent;
 	padding: 15px;
 	-webkit-border-image: url("./assets/green_border.png") 50 round;
 	-o-border-image: url("./assets/green_border.png") 50 round;

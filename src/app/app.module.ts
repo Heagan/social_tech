@@ -26,6 +26,8 @@ import { GraphComponent } from './home/graph/graph.component';
 import { LearnComponent } from './learn/learn.component';
 import { APIService } from './api.service';
 import { NeedAuthGuard } from './auth.guard';
+import { DetailsComponent } from './dashboard/details/details.component';
+import { DashboardMobileComponent } from './dashboard-mobile/dashboard-mobile.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { NeedAuthGuard } from './auth.guard';
 	CheckInViewComponent,
 	GraphComponent,
 	LearnComponent,
+	DetailsComponent,
+	DashboardMobileComponent,
   ],
   imports: [
 	BrowserModule,
