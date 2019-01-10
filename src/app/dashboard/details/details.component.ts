@@ -16,9 +16,13 @@ export class DetailsComponent implements OnInit {
 
 	user: Observable<UserFields>;
 	motivMess: Observable<MotivMessReturn>;
-
+	
+	public innerWidth = 0;
+	public quote = false;
+	public logout = false;
+	
 	constructor(public api: APIService) { }
-
+	
 	ngOnInit() {
 		this.user = this.api.getUser();
 		this.motivMess = this.api.getMotivMess();
