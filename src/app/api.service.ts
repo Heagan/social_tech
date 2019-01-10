@@ -33,13 +33,13 @@ export class APIService {
 		this.messageSource.next(message)
 	}
 
-	private motivMessUrl = "http://localhost:8080/api/motivational_r";
-	private goalsCompletedUrl = "http://localhost:8080/api/completed_commitments/";
-	private goalsUrl = "http://localhost:8080/api/commitments/";
-	private notesUrl = "http://localhost:8080/api/notes/";
-	private usersUrl = "http://localhost:8080/api/users/";
-	private loginUrl = "http://localhost:8080/api/login";
-	private loginWithTokenUrl = "http://localhost:8080/api/token_login";
+	private motivMessUrl = 		"https://smile-coaching-platform-dev.herokuapp.com/api/motivational_r";
+	private goalsCompletedUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/completed_commitments/";
+	private goalsUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/commitments/";
+	private notesUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notes/";
+	private usersUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/";
+	private loginUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/login";
+	private loginWithTokenUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/token_login";
 
 	public motivMessSource = new BehaviorSubject(undefined);
 	public motivMess = <Observable<MotivMessReturn>>this.motivMessSource.asObservable();

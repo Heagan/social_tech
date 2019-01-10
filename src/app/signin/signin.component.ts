@@ -12,7 +12,7 @@ import { DefaultReturn, LoginReturnDetails } from '../models/api-models';
 export class SigninComponent implements OnInit {
 
 	error: string;
-	loading: boolean = true;
+	loading: boolean = false;
 
 	constructor(private api: APIService, private router: Router) {
 	}
@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit {
 
 	private tryLogin(login: Observable<DefaultReturn>) {
 		console.log("Logging in");
-		
+		this.loading = true;
 		login.subscribe(
 			res => {
 				console.log("Logged " + res.data);
@@ -36,6 +36,7 @@ export class SigninComponent implements OnInit {
 			},
 			error => {
 				this.error = error;
+				this.loading = false;
 			},
 			() => {
 				console.log("Logged " + this.api.loginInfo);
@@ -45,6 +46,7 @@ export class SigninComponent implements OnInit {
 					this.api.refreshEverything();
 					this.router.navigateByUrl('/home');
 				}
+				this.loading = false;
 			}
 		);
 	}
