@@ -1,5 +1,4 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 #bordering {
 	border: 10px transparent;
 	padding: 15px;
@@ -46,18 +45,25 @@
 }
 
 .card {
-	background: rgb(178, 255, 188);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	/* background: rgb(157, 238, 157); */
+	background: transparent;
+	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 	margin: 0 auto;
 	text-align: center;
 	width: 80%;
 	border-radius: 5px;
+	background-image: url("./assets/green_border.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
+.border-img {
+	margin: 0 auto;
+	text-align: center;
+	background: transparent;
 	border: 10px solid transparent;
-	/* padding: 15px; */
-	-webkit-border-image: url("./assets/b.jpg") 50 round;
-	-o-border-image: url("./assets/b.jpg") 50 round;
-	border-image: url("./assets/b.jpg") 50 round;
+	width: 80%;
+	border-image: url("./assets/green_border.png") 50 round;
 }
 
 .g-grd {
@@ -77,7 +83,7 @@
 }
 
 .g-light {
-	background: linear-gradient(to bottom,rgba(255,0,0,0), lime, lime)
+	background: linear-gradient(to bottom, rgba(255, 0, 0, 0), lime, lime)
 }
 
 .bg-image {

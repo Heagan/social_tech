@@ -1,7 +1,6 @@
 <div class="card">
 	<h2>Check-in questions</h2>
-	<textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
-	placeholder="Note" (click)="newMessage()">{{message}}</textarea>
+	<textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" placeholder="Note" (click)="newMessage()">{{message}}</textarea>
 	<button class="btn-primary">Add Note</button>
 	<a matRipple (click)="router.navigateByUrl('checkin')" class="btn btn-primary">Check-in</a>
 </div>
@@ -10,8 +9,13 @@
 <app-graph></app-graph>
 <div id="sp-10"></div>
 <div class='card'>
-	<p><ngb-progressbar type="success" [value]="25"></ngb-progressbar></p>
-	<p><ngb-progressbar value="500" type="info"></ngb-progressbar></p>
+	<button (click)="da('a')">Date</button>
+	<p>
+		<ngb-progressbar type="success" [value]="25"></ngb-progressbar>
+	</p>
+	<p>
+		<ngb-progressbar value="500" type="info"></ngb-progressbar>
+	</p>
 </div>
 <div id="sp-10"></div>
 <h2 class="card">Todays Activity</h2>

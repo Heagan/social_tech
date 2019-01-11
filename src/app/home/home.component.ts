@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
 
 import { APIService } from '../api.service';
 import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
@@ -33,6 +33,12 @@ export class HomeComponent implements OnInit {
 	newMessage() {
 		console.log("HELLO!");
 		this.api.changeMessage("Hello from Sibling")
+	}
+
+	day = formatDate(Date(), "MMM d, y", "en-US");
+	time = formatDate(Date(), "h:mm:ss", "en-US");
+	da(ada) {
+		console.log(this.day + " at " + this.time);
 	}
 
 }

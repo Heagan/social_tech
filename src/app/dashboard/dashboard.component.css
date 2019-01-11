@@ -18,6 +18,10 @@ body {
 }
 
 .topnav a:hover {
+	color: black;
+}
+
+.ish:hover {
 	background-color: #ddd;
 	color: black;
 }

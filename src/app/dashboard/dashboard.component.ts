@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 	motivMess: Observable<MotivMessReturn>;
 
 	public page = 'home';
-	public quote = true;
+	public quote = false;
 	public innerWidth: any;
 	public innerHeight: any;
 
@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.innerWidth = window.innerWidth;
 		this.user = this.api.getUser();
 		this.motivMess = this.api.getMotivMess();
 	}

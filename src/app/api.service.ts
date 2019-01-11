@@ -17,9 +17,9 @@ import {
 	NoteReturnDetails,
 	UserFields,
 	CompletedGoalInfoReturn,
-	MotivMessReturn
+	MotivMessReturn,
+	CheckinReturn
 } from './models/api-models'
-import { error } from 'util';
 
 @Injectable({
 	providedIn: 'root'
@@ -33,13 +33,17 @@ export class APIService {
 		this.messageSource.next(message)
 	}
 
-	private motivMessUrl = 		"https://smile-coaching-platform-dev.herokuapp.com/api/motivational_r";
+	private checkinUrl		= "https://smile-coaching-platform-dev.herokuapp.com/api/checkins";
+	private motivMessUrl	= "https://smile-coaching-platform-dev.herokuapp.com/api/motivational_r";
 	private goalsCompletedUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/completed_commitments/";
 	private goalsUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/commitments/";
 	private notesUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notes/";
 	private usersUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/";
 	private loginUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/login";
 	private loginWithTokenUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/token_login";
+
+	public checkinSource = new BehaviorSubject(undefined);
+	public checkin = <Observable<CheckinReturn>>this.checkinSource.asObservable();
 
 	public motivMessSource = new BehaviorSubject(undefined);
 	public motivMess = <Observable<MotivMessReturn>>this.motivMessSource.asObservable();
@@ -123,6 +127,17 @@ export class APIService {
 		);
 	}
 
+	public submitCheckinAnswers(answers: CheckinReturn): Observable<DefaultReturn>  {
+		if (!this.isLoggedIn())
+			return undefined;
+		answers.user_id = this.loginInfo.user_id;
+		console.log("Submitting users answers");
+		return this.http.post<DefaultReturn>(this.checkinUrl, answers).pipe(
+			retry(3),
+			catchError(this.errorHandler)
+		);
+	}
+
 	public addNote(note: string): Observable<DefaultReturn> {
 		console.log("API Says: Adding New note " + note);
 		var date: string = formatDate(Date.now(), 'medium', 'en-US');
@@ -158,7 +173,7 @@ export class APIService {
 	}
 
 	public refreshNotes() {
-		this.getNotesFromDB().subscribe(res => 	this.notesSource.next(res), error => console.error(error) );
+		this.getNotesFromDB().subscribe(res => this.notesSource.next(res), error => console.error(error));
 	}
 
 	public refreshGoals() {
@@ -166,7 +181,7 @@ export class APIService {
 			res => {
 				this.goalsSource.next(<GoalInfoReturn[]>res.data);
 				console.log("Got the goals");
-				
+
 				this.getCompletedGoalFromDB().subscribe(
 					res => {
 						console.log("Got the com goals");
@@ -181,8 +196,7 @@ export class APIService {
 	}
 
 	public refreshMotivMess() {
-		this.getMotivMessFromDB().subscribe(res => this.motivMessSource.next(res.data[0]), error => console.error(error) );
-
+		this.getMotivMessFromDB().subscribe(res => this.motivMessSource.next(res.data[0]), error => console.error(error));
 	}
 
 	public refreshEverything() {
