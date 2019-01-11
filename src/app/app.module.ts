@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppMaterialModule } from './app-material/app-material.module';
 import { AppRoutingModule } from './app-routing.module';
-
 import { ChartsModule } from 'ng2-charts';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -57,6 +57,7 @@ import { DashboardMobileComponent } from './dashboard-mobile/dashboard-mobile.co
 	FormsModule,
 	ReactiveFormsModule,
 	ChartsModule,
+	NgbModule,
   ],
   entryComponents: [],
 	providers: [NeedAuthGuard],

@@ -1,20 +1,8 @@
-<div class="row card">
-	<div class="col-md-6">
-		<div style="background: white; display: block;" >
-			<canvas baseChart width="$('#parent').width()" height="100%" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-			 [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
-			 (chartClick)="chartClicked($event)"></canvas>
-		</div>
-	</div>
-	<div class="col-md-6" style="margin-bottom: 10px">
-		<table class="table table-responsive table-condensed">
-			<tr>
-				<th *ngFor="let label of lineChartLabels">{{label}}</th>
-			</tr>
-			<tr *ngFor="let d of lineChartData">
-				<td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-			</tr>
-		</table>
+<div class="card">
+	<div style="background: white; display: block;">
+		<canvas baseChart width="$('#parent').width()" height="100%" [datasets]="lineChartData" [labels]="lineChartLabels"
+		 [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+		 (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
 	</div>
 	<button class="btn-primary" (click)="randomize()">Randomize</button>
 </div>

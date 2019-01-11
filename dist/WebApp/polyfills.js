@@ -3160,7 +3160,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /goinfre/gsferopo/Desktop/social_github/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! E:\Users\Heagan\Desktop\social_tech\src\polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })

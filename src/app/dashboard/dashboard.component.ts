@@ -4,7 +4,7 @@ import { APIService } from '../api.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { UserFields, MotivMessReturn } from '../models/api-models';
-import { DetailsComponent } from './details/details.component';
+import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
 	providedIn: 'root'
@@ -18,11 +18,14 @@ export class DashboardComponent implements OnInit {
 
 	user: Observable<UserFields>;
 	motivMess: Observable<MotivMessReturn>;
-	
+
 	public page = 'home';
-	public quote = false;
+	public quote = true;
 	public innerWidth: any;
 	public innerHeight: any;
+
+	public exp: number = 7849;
+	public lvl: number = 0;
 
 	@HostListener('window:resize', ['$event'])
 	onResize(event) {
@@ -30,7 +33,12 @@ export class DashboardComponent implements OnInit {
 		this.innerHeight = window.innerHeight;
 	}
 
-	constructor(public api: APIService, public router: Router) {
+	constructor(public api: APIService, public router: Router, expBar: NgbProgressbarConfig) {
+		expBar.max = 1000;
+		expBar.striped = true;
+		expBar.animated = true;
+		expBar.type = 'success';
+		expBar.height = '20px';
 	}
 
 	ngOnInit() {
