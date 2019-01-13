@@ -17,7 +17,7 @@ const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{ path: 'login', component: SigninComponent},
 	{ path: 'notes', component: NotesComponent, canActivate: [NeedAuthGuard] },
-	{ path: 'home', component: AdminComponent, canActivate: [NeedAuthGuard] },
+	{ path: 'home', component: HomeComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'goals', component: GoalsComponent, canActivate: [NeedAuthGuard]  },
 	{ path: 'profile', component: ProfileCardComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'checkin', component: CheckInViewComponent, canActivate: [NeedAuthGuard] },
