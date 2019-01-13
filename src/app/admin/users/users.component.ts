@@ -42,12 +42,8 @@ export class UsersComponent implements OnInit {
 		this.api.getGoalsFromDB().subscribe(
 			res => {
 				this.api.goalsSource.next(<GoalInfoReturn[]>res.data);
-				console.log("Got the goals -----------------------");
-				console.log(res.data);
-
 				this.api.getCompletedGoalFromDB().subscribe(
 					res => {
-						console.log("Got the com goals");
 						this.api.completeGoalsSource.next(<CompletedGoalInfoReturn[]>res.data);
 					},
 					error => console.error(error),
@@ -61,7 +57,7 @@ export class UsersComponent implements OnInit {
 	}
 
 	log(log) {
-		// console.log(log);
+		console.log(log);
 	}
 
 	search() {

@@ -35,9 +35,8 @@
 		</div>
 		<div #Goals class="tabcontent" style="background-color:#ddd;">
 			<h2>Goals</h2>
-			<ul>
+			<ul id="myMenu">
 				<li *ngFor="let goal of api.goalsInfo; let i = index;">
-					<div *ngIf="log(goal)"></div>
 					<span>{{goal?.goal.goal_title}}</span>
 				</li>
 			</ul>
@@ -45,7 +44,7 @@
 		<div #Notes class="tabcontent" style="background-color:#ddd;">
 			<h2>Notes</h2>
 			<div *ngIf="((notes | async)?.data)">
-				<ul>
+				<ul id="myMenu">
 					<li *ngFor="let note of ((notes | async)?.data).slice().reverse(); let i = index">
 						<span>{{note?.note}}</span>
 					</li>
