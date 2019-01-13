@@ -70,16 +70,17 @@
 					</button>
 				</mat-menu>
 			</div>
-			
+
 			<a *ngIf="quote" class="g-light" (click)="newMessage()" style="width: 100%; position: absolute; bottom: 30px; right: 0; font-size: 24px;">
 				{{(motivMess | async)?.description}}
 			</a>
 
 			<h2 *ngIf="quote" class="expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user | async)?.data.exp_points %
 				1000)) / 1000}} Weeb!</h2>
-			<ngb-progressbar *ngIf="quote" value="500" type="info" class="expbar"></ngb-progressbar>
+			<ngb-progressbar *ngIf="quote" [value]="(api.getUser() | async)?.data?.exp_points % 1000" type="info" class="expbar"></ngb-progressbar>
 			<p *ngIf="quote" class="expbar_text">
 				{{(user | async)?.data.exp_points % 1000}} / 1000
+				{{exp}}
 			</p>
 
 			<button class="btn-primary" style="width: 100%;  top: 64px; position: absolute; left:0;" *ngIf="!quote" (click)="quote = !quote">

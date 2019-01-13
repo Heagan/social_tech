@@ -24,7 +24,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 	templateUrl: './goals.component.html',
 	styleUrls: ['./goals.component.css']
 })
-
 export class GoalsComponent implements OnInit {
 
 
@@ -35,7 +34,7 @@ export class GoalsComponent implements OnInit {
 
 	goals: Goal[] = new Array();
 
-	constructor(private api: APIService) { }
+	constructor(public api: APIService) { }
 
 	ngOnInit() {
 		this.getCommitments();
@@ -48,24 +47,41 @@ export class GoalsComponent implements OnInit {
 	getCommitments() {
 		var goalInfo: GoalInfoReturn[];
 		var comGoalInfo: CompletedGoalInfoReturn[];
-
+		this.goals = new Array;
+		
 		this.api.getGoals().subscribe(res => {
+			if (!res) {
+				return;
+			}
 			goalInfo = res;
 			this.api.getCommitmentsGoals().subscribe(
 				res => {
 					comGoalInfo = res;
+					console.log("get goal " + res);
+					//for each goal
 					for (var info of goalInfo) {
+						//empty array
 						var comArray = new Array();
+						//for each goal detail
 						for (var com of comGoalInfo) {
+							// if goal detail belongs to goal
 							if (com.goal_id == info.goal_id) {
+								//add to array
 								comArray.push(com);
 							}
 						}
-						this.goals.push(new Goal(info, comArray));
+						//there must not be children
+						if (info.parent_goal_id == null)
+							//make a goal class with the goal, and its detail goals
+							this.goals.push(new Goal(info, comArray));
+						// console.log("Current goal " + info.goal_title);
+
 					}
 				}
 			)
 		});
+		this.api.goalsInfo = new Array;
+		this.api.goalsInfo = this.goals;
 	}
 
 	getComFromId(id: number): Goal[] {
@@ -84,7 +100,7 @@ export class GoalsComponent implements OnInit {
 
 export class Goal {
 
-	constructor(public goal: GoalInfoReturn, public complete: CompletedGoalInfoReturn[]) {	 };
+	constructor(public goal: GoalInfoReturn, public complete: CompletedGoalInfoReturn[]) { };
 
 	public collapse: boolean = false;
 

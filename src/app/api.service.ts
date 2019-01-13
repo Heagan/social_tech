@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { formatDate } from '@angular/common';
 
+import { Goal } from './goals/goals.component';
+
 import {
 	HttpClient,
 	HttpErrorResponse,
@@ -26,21 +28,21 @@ import {
 })
 export class APIService {
 
-	private messageSource = new BehaviorSubject('default message');
+	public messageSource = new BehaviorSubject('default message');
 	currentMessage = this.messageSource.asObservable();
 
 	changeMessage(message: string) {
 		this.messageSource.next(message)
 	}
 
-	private checkinUrl		= "https://smile-coaching-platform-dev.herokuapp.com/api/checkins";
-	private motivMessUrl	= "https://smile-coaching-platform-dev.herokuapp.com/api/motivational_r";
-	private goalsCompletedUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/completed_commitments/";
-	private goalsUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/commitments/";
-	private notesUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notes/";
-	private usersUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/";
-	private loginUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/login";
-	private loginWithTokenUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/token_login";
+	public checkinUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/checkins";
+	public motivMessUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/motivational_r";
+	public goalsCompletedUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/completed_commitments/";
+	public goalsUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/commitments/";
+	public notesUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notes/";
+	public usersUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/";
+	public loginUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/login";
+	public loginWithTokenUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/token_login";
 
 	public checkinSource = new BehaviorSubject(undefined);
 	public checkin = <Observable<CheckinReturn>>this.checkinSource.asObservable();
@@ -60,9 +62,11 @@ export class APIService {
 	public goalsSource = new BehaviorSubject<GoalInfoReturn[]>(undefined);
 	public goals = <Observable<GoalInfoReturn[]>>this.goalsSource.asObservable();
 
+	public goalsInfo: Goal[];
+
 	public loginInfo: LoginReturnDetails;
 
-	constructor(private http: HttpClient) { }
+	constructor(public http: HttpClient) { }
 
 	public isLoggedIn(): boolean {
 		if (this.loginInfo)
@@ -77,7 +81,17 @@ export class APIService {
 		return false;
 	}
 
-	private getUserFromDB(): Observable<DefaultReturn> {
+	public getAllUsersFromDB(): Observable<DefaultReturn> {
+		if (!this.isLoggedIn())
+			return undefined;
+		console.log("Getting user info");
+		return this.http.get<DefaultReturn>(this.usersUrl).pipe(
+			retry(3),
+			catchError(this.errorHandler)
+		);
+	}
+
+	public getUserFromDB(): Observable<DefaultReturn> {
 		if (!this.isLoggedIn())
 			return undefined;
 		console.log("Getting user info");
@@ -87,7 +101,7 @@ export class APIService {
 		);
 	}
 
-	private getNotesFromDB(): Observable<DefaultReturn> {
+	public getNotesFromDB(): Observable<DefaultReturn> {
 		if (!this.isLoggedIn())
 			return undefined;
 		console.log("Getting notes from db");
@@ -97,7 +111,7 @@ export class APIService {
 		);
 	}
 
-	private getGoalsFromDB(): Observable<DefaultReturn> {
+	public getGoalsFromDB(): Observable<DefaultReturn> {
 		if (!this.isLoggedIn())
 			return undefined;
 		console.log("Getting goals from db");
@@ -107,7 +121,7 @@ export class APIService {
 		);
 	}
 
-	private getMotivMessFromDB(): Observable<DefaultReturn> {
+	public getMotivMessFromDB(): Observable<DefaultReturn> {
 		if (!this.isLoggedIn())
 			return undefined;
 		console.log("Getting a motivational message from db");
@@ -117,7 +131,7 @@ export class APIService {
 		);
 	}
 
-	private getCompletedGoalFromDB(): Observable<DefaultReturn> {
+	public getCompletedGoalFromDB(): Observable<DefaultReturn> {
 		if (!this.isLoggedIn())
 			return undefined;
 		console.log("Getting completed goals from db");
@@ -127,7 +141,7 @@ export class APIService {
 		);
 	}
 
-	public submitCheckinAnswers(answers: CheckinReturn): Observable<DefaultReturn>  {
+	public submitCheckinAnswers(answers: CheckinReturn): Observable<DefaultReturn> {
 		if (!this.isLoggedIn())
 			return undefined;
 		answers.user_id = this.loginInfo.user_id;
@@ -180,7 +194,8 @@ export class APIService {
 		this.getGoalsFromDB().subscribe(
 			res => {
 				this.goalsSource.next(<GoalInfoReturn[]>res.data);
-				console.log("Got the goals");
+				console.log("Got the goals -----------------------");
+				console.log(res.data);
 
 				this.getCompletedGoalFromDB().subscribe(
 					res => {
@@ -246,7 +261,7 @@ export class APIService {
 		return undefined;
 	}
 
-	private errorHandler(error: HttpErrorResponse) {
+	public errorHandler(error: HttpErrorResponse) {
 		if (error.error instanceof ErrorEvent) {
 			console.error('A client-side or network error occurred:', error.error.message);
 		} else {

@@ -28,40 +28,48 @@ import { APIService } from './api.service';
 import { NeedAuthGuard } from './auth.guard';
 import { DetailsComponent } from './dashboard/details/details.component';
 import { DashboardMobileComponent } from './dashboard-mobile/dashboard-mobile.component';
+import { AdminComponent } from './admin/admin.component';
+import { UsersComponent } from './admin/users/users.component';
+import { QuotesComponent } from './admin/quotes/quotes.component';
+import { LcentreComponent } from './admin/lcentre/lcentre.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    DashboardComponent,
-    GoalsComponent,
-    ProfileCardComponent,
-    LoginComponent,
-    SignupComponent,
-    SigninComponent,
-    ProfileComponent,
-    NotesComponent,
-    TodaysActivityViewComponent,
-	CheckInViewComponent,
-	GraphComponent,
-	LearnComponent,
-	DetailsComponent,
-	DashboardMobileComponent,
-  ],
-  imports: [
-	BrowserModule,
-	BrowserAnimationsModule,
-	HttpClientModule,
-    AppRoutingModule,
-    AppMaterialModule,
-	FormsModule,
-	ReactiveFormsModule,
-	ChartsModule,
-	NgbModule,
-  ],
-  entryComponents: [],
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		DashboardComponent,
+		GoalsComponent,
+		ProfileCardComponent,
+		LoginComponent,
+		SignupComponent,
+		SigninComponent,
+		ProfileComponent,
+		NotesComponent,
+		TodaysActivityViewComponent,
+		CheckInViewComponent,
+		GraphComponent,
+		LearnComponent,
+		DetailsComponent,
+		DashboardMobileComponent,
+		AdminComponent,
+		UsersComponent,
+		QuotesComponent,
+		LcentreComponent,
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		AppRoutingModule,
+		AppMaterialModule,
+		FormsModule,
+		ReactiveFormsModule,
+		ChartsModule,
+		NgbModule,
+	],
+	entryComponents: [],
 	providers: [NeedAuthGuard],
-  bootstrap: [AppComponent]
+	bootstrap: [AppComponent]
 })
 
 export class AppModule { }

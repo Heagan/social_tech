@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
 	public innerHeight: any;
 
 	public exp: number = 7849;
-	public lvl: number = 0;
 
 	@HostListener('window:resize', ['$event'])
 	onResize(event) {
@@ -45,6 +44,14 @@ export class DashboardComponent implements OnInit {
 		this.innerWidth = window.innerWidth;
 		this.user = this.api.getUser();
 		this.motivMess = this.api.getMotivMess();
+		this.user.subscribe(
+			res => {
+				if (res) {
+					this.exp = res.exp_points;
+					console.log("Ex: " + this.exp);
+				}
+			}
+		);
 	}
 
 	openPage(path: string) {

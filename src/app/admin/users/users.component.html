@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="bar">
+		<h2>Search:</h2>
+
+		<button #sel mat-button [matMenuTriggerFor]="menu" style="background: white; margin: 5px;">
+			By: {{searchBy}}
+		</button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item (click)="searchBy = 'Name'">
+				<span>Name</span>
+			</button>
+			<button mat-menu-item (click)="searchBy = 'Date'">
+				<span>Date</span>
+			</button>
+		</mat-menu>
+
+
+		<input type="text" id="mySearch" (keyup)="search()" placeholder="Search.." title="Type in a category">
+		<ul id="myMenu">
+			<li *ngFor="let user of users; let i = index" (click)="selectUser(i)">
+				<a class="button"> {{user.user_id}} | {{user.first_name}}</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="">
+		<div class="tab">
+			<button class="tablinks" (click)="Info.style.display = 'block'; Goals.style.display = 'none'; Notes.style.display = 'none';">Info</button>
+			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'block'; Notes.style.display = 'none';">Goals</button>
+			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'none'; Notes.style.display = 'block';">Notes</button>
+		</div>
+		<div #Info class="tabcontent" style="background-color:#ddd; display: block;">
+			<h2>{{selUser?.first_name}} {{selUser?.last_name}}</h2>
+			<p>{{selUser?.phone_number}}</p>
+		</div>
+		<div #Goals class="tabcontent" style="background-color:#ddd;">
+			<h2>Goals</h2>
+			<ul>
+				<li *ngFor="let goal of api.goalsInfo; let i = index;">
+					<div *ngIf="log(goal)"></div>
+					<span>{{goal?.goal.goal_title}}</span>
+				</li>
+			</ul>
+		</div>
+		<div #Notes class="tabcontent" style="background-color:#ddd;">
+			<h2>Notes</h2>
+			<div *ngIf="((notes | async)?.data)">
+				<ul>
+					<li *ngFor="let note of ((notes | async)?.data).slice().reverse(); let i = index">
+						<span>{{note?.note}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+</div>

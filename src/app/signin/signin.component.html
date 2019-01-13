@@ -1,4 +1,6 @@
-<div class="card" style="max-width:500px; margin:auto" *ngIf="show">
+<div *ngIf="loading" class="over"><mat-progress-spinner class="spinner" [color]="red" mode="indeterminate"></mat-progress-spinner></div>
+
+<div class="card " style="max-width:500px; margin:auto" *ngIf="show">
 
 	<form style="max-width:500px; margin:auto">
 		<br>
@@ -16,12 +18,12 @@
 			<i class="fa fa-key icon"></i>
 			<input #passwordText class="input-field" type="password" placeholder="Password" name="psw" required>
 		</div>
-		<div *ngIf="error" >
+		<div *ngIf="error">
 			<mat-error>{{error}}</mat-error>
 		</div>
 		<mat-checkbox #check checked=true>Remember me</mat-checkbox>
 		<button type="submit" class="btn" (click)="login(emailText.value, passwordText.value, check.checked)">Log in</button>
-		<mat-progress-spinner [color]="red" mode="indeterminate" *ngIf="loading"></mat-progress-spinner>
+		
 	</form>
 	<br>
 	<div style="background-color:#f1f1f1">

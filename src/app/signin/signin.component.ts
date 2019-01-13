@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Injectable } from '@angular/core';
 import { APIService } from '../api.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { DefaultReturn, LoginReturnDetails } from '../models/api-models';
 export class SigninComponent implements OnInit {
 
 	error: string;
-	loading: boolean = true;
+	loading: boolean = false;
 	show: boolean = false;
 
 	constructor(private api: APIService, private router: Router) {
@@ -43,7 +43,7 @@ export class SigninComponent implements OnInit {
 				console.log("Logged " + this.api.loginInfo);
 				if (this.api.loginInfo) {
 					localStorage.setItem('logged_in', 'true');
-					localStorage.setItem('token', this.api.loginInfo.v_token.toString());
+					// localStorage.setItem('token', this.api.loginInfo.v_token.toString());
 					this.api.refreshEverything();
 					this.router.navigateByUrl('/home');
 				}
