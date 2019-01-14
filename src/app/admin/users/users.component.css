@@ -1,13 +1,3 @@
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-/* Create a column layout with Flexbox */
-
 .row {
 	/* display: flex; */
 	padding: 5px;
@@ -124,12 +114,12 @@ body {
 
 li {
 	cursor: pointer;
-	position: relative;
+	/* position: relative; */
 	left: 0;
 	background-color: #EEE;
 	margin: .5em;
 	padding: .3em 0;
-	height: 1.6em;
+	/* height: 1.6em; */
 	border-radius: 4px;
 }
 
@@ -142,4 +132,10 @@ li:hover {
 	color: #607D8B;
 	background-color: #DDD;
 	left: .1em;
+}
+
+.users-list {
+	/* width: 300px; */
+	/* height: 200px; */
+	overflow: auto;
 }
