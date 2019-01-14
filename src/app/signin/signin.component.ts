@@ -28,6 +28,9 @@ export class SigninComponent implements OnInit {
 
 	private tryLogin(login: Observable<DefaultReturn>) {
 		console.log("Logging in");
+
+
+		
 		this.loading = true;
 		login.subscribe(
 			res => {

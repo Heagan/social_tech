@@ -19,7 +19,7 @@ const routes: Routes = [
 	{ path: 'login', component: SigninComponent},
 	{ path: 'signup', component: SignupComponent },
 	{ path: 'notes', component: NotesComponent, canActivate: [NeedAuthGuard] },
-	{ path: 'home', component: SignupComponent, canActivate: [NeedAuthGuard] },
+	{ path: 'home', component: HomeComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'goals', component: GoalsComponent, canActivate: [NeedAuthGuard]  },
 	{ path: 'profile', component: ProfileCardComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'checkin', component: CheckInViewComponent, canActivate: [NeedAuthGuard] },

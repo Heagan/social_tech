@@ -1,42 +1,37 @@
 <div class="bg-image"></div>
 
-<div class="col-12" id="sticky" *ngIf="api.isLoggedIn()">
+<div id="sticky" *ngIf="api.isLoggedIn()">
 	<div class="topnav g-grd">
-		<a class="d-flex align-items-center" [ngClass]="{'button': true, 'active': page == 'home', 'ish': true }" (click)="openPage('home'); page = 'home';">
+		<a [ngClass]="{'button': true, 'active': page == 'home', 'ish': true }" (click)="openPage('home'); page = 'home';">
 			<mat-icon navbar style="font-size: 36px;">home</mat-icon>
 			Home
 		</a>
-		<a class="d-flex align-items-center" [ngClass]="{'button': true, 'active': page == 'goals', 'ish': true }" (click)="openPage('goals'); page = 'goals';">
+		<a [ngClass]="{'button': true, 'active': page == 'goals', 'ish': true }" (click)="openPage('goals'); page = 'goals';">
 			<mat-icon navbar style="font-size: 36px;">star</mat-icon>
 			Goals
 		</a>
-		<a class="d-flex align-items-center" [ngClass]="{'button': true, 'active': page == 'notes', 'ish': true }" (click)="openPage('notes'); page = 'notes';">
+		<a [ngClass]="{'button': true, 'active': page == 'notes', 'ish': true }" (click)="openPage('notes'); page = 'notes';">
 			<mat-icon navbar style="font-size: 36px;">event_note</mat-icon>
 			Notes
 		</a>
-		<a class="d-flex align-items-center" [ngClass]="{'button': true, 'active': page == 'learn', 'ish': true }" (click)="openPage('learn'); page = 'learn';">
+		<a [ngClass]="{'button': true, 'active': page == 'learn', 'ish': true }" (click)="openPage('learn'); page = 'learn';">
 			<mat-icon navbar style="font-size: 36px;">school</mat-icon>
 			Learn
 		</a>
 		<div [ngClass]="{'dash': quote}">
 			<div class="topnav-right" *ngIf="quote || innerWidth > 750">
-				<div class="d-flex align-items-center justify-content-end">
-					<a class="d-flex align-items-center" (click)="openPage('profile')">
-						<mat-icon class="face-icon" navbar>face</mat-icon>
-						{{(user | async)?.data.first_name}}
-					</a>
+				<a (click)="openPage('profile')" class="button">
+					<mat-icon navbar>face</mat-icon>
+					{{(user | async)?.data.first_name}}
+				</a>
 
-					<a class="d-flex align-items-center">
-						<button class="d-flex align-items-center justify-content-center" mat-icon-button [matMenuTriggerFor]="noti" style="background: white; color: black; margin: 5px;">
-							<mat-icon navbar matBadge="4" matBadgeColor="warn">notifications</mat-icon>
-						</button>
-					</a>
-					<a class="d-flex align-items-center">
-						<button class="d-flex align-items-center justify-content-center" mat-icon-button [matMenuTriggerFor]="menu" style="background: white; color: black; margin: 5px;">
-							<mat-icon>more_vert</mat-icon>
-						</button>
-					</a>
-				</div>
+				<button mat-icon-button [matMenuTriggerFor]="noti" style="background: white; margin: 5px;">
+					<mat-icon navbar matBadge="4" matBadgeColor="warn">notifications</mat-icon>
+				</button>
+				<button mat-icon-button [matMenuTriggerFor]="menu" style="background: white; margin: 5px;">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+
 				<mat-menu #noti="matMenu">
 					<button mat-menu-item>
 						<mat-icon>clear</mat-icon>
@@ -80,10 +75,10 @@
 				{{(motivMess | async)?.description}}
 			</a>
 
-			<h2 *ngIf="quote" class="expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user | async)?.data.exp_points %
+			<h2 *ngIf="quote" class="glow-red expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user | async)?.data.exp_points %
 				1000)) / 1000}} Weeb!</h2>
 			<ngb-progressbar *ngIf="quote" [value]="(api.getUser() | async)?.data?.exp_points % 1000" type="info" class="expbar"></ngb-progressbar>
-			<p *ngIf="quote" class="expbar_text">
+			<p *ngIf="quote" class="glow-blue expbar_text">
 				{{(user | async)?.data.exp_points % 1000}} / 1000
 				{{exp}}
 			</p>

@@ -1,4 +1,18 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.glow-red {
+	text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073;
+}
+
+.glow-blue {
+	text-shadow: 0 0 1px #fff, 0 0 2px rgb(218, 179, 255), 0 0 3px #6400e6, 0 0 4px #0400e6, 0 0 5px #0036e6, 0 0 6px #008ae6, 0 0 7px #00b8e6;
+}
+
+.glow-green {
+	text-shadow: 0 0 1px #fff, 0 0 2px rgb(255, 255, 255), 0 0 3px #00e600, 0 0 4px #00e63a, 0 0 5px #6fe600, 0 0 6px #8ee600, 0 0 7px #00e626;
+}
+
+
 #bordering {
 	border: 10px transparent;
 	padding: 15px;
@@ -45,16 +59,17 @@
 }
 
 .card {
-	/* background: rgb(157, 238, 157); */
-	background: transparent;
+	text-shadow: 1px 1px white;
+	background: rgba(157, 238, 157, 0.3);
+	/* background: transparent; */
 	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 	margin: 0 auto;
 	text-align: center;
 	width: 80%;
 	border-radius: 5px;
-	background-image: url("./assets/green_border.png");
+	/* background-image: url("./assets/green_border.png");
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
 }
 
 .border-img {

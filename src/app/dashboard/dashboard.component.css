@@ -2,13 +2,7 @@ body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 }
-mat-icon {
-	height: 100%;
-	width: 100%;
-}
-.face-icon {
-	padding-right: 10px;
-}
+
 .topnav {
 	overflow: hidden;
 	background-color: #333;
@@ -46,7 +40,7 @@ mat-icon {
 }
 
 .topnav-right {
-	/* float: right; */
+	float: right;
 }
 
 .sidebar {
