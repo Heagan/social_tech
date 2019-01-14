@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './home/home.component';
 import { GoalsComponent } from './goals/goals.component';
+import { GoalFormComponent } from './goals/goal-form/goal-form.component';
 import { ProfileCardComponent } from "./profile-card/profile-card.component";
 import { NotesComponent } from './notes/notes.component';
 import { CheckInViewComponent } from './check-in-view/check-in-view.component';
@@ -19,7 +20,7 @@ const routes: Routes = [
 	{ path: 'login', component: SigninComponent},
 	{ path: 'signup', component: SignupComponent },
 	{ path: 'notes', component: NotesComponent, canActivate: [NeedAuthGuard] },
-	{ path: 'home', component: HomeComponent, canActivate: [NeedAuthGuard] },
+	{ path: 'home', component: GoalFormComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'goals', component: GoalsComponent, canActivate: [NeedAuthGuard]  },
 	{ path: 'profile', component: ProfileCardComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'checkin', component: CheckInViewComponent, canActivate: [NeedAuthGuard] },

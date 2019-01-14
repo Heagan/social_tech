@@ -77,7 +77,7 @@
 
 			<div *ngIf="!api.isAdmin()">
 
-				<a *ngIf="quote" class="g-light" (click)="newMessage()" style="width: 100%; position: absolute; bottom: 30px; right: 0; font-size: 24px;">
+				<a *ngIf="quote" class="g-light glow-black" (click)="newMessage()" style="width: 100%; position: absolute; bottom: 30px; right: 0; font-size: 24px;">
 					{{(motivMess | async)?.description}}
 				</a>
 

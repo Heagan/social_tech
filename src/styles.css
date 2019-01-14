@@ -1,17 +1,25 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .glow-red {
-	text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073;
+	text-shadow: 0 0 1px rgb(255, 255, 255), 0 0 2px #fff, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073;
 }
 
 .glow-blue {
-	text-shadow: 0 0 1px #fff, 0 0 2px rgb(218, 179, 255), 0 0 3px #6400e6, 0 0 4px #0400e6, 0 0 5px #0036e6, 0 0 6px #008ae6, 0 0 7px #00b8e6;
+	text-shadow: 0 0 1px rgb(255, 255, 255), 0 0 2px rgb(218, 179, 255), 0 0 3px #6400e6, 0 0 4px #0400e6, 0 0 5px #0036e6, 0 0 6px #008ae6, 0 0 7px #00b8e6;
 }
 
 .glow-green {
-	text-shadow: 0 0 1px #fff, 0 0 2px rgb(255, 255, 255), 0 0 3px #00e600, 0 0 4px #00e63a, 0 0 5px #6fe600, 0 0 6px #8ee600, 0 0 7px #00e626;
+	text-shadow: 0 0 1px rgb(255, 255, 255), 0 0 2px rgb(255, 255, 255), 0 0 3px #00e600, 0 0 4px #00e63a, 0 0 5px #6fe600, 0 0 6px #8ee600, 0 0 7px #00e626;
 }
 
+
+.glow-black {
+	text-shadow: 0 0 1px rgb(255, 255, 255), 0 0 2px rgb(206, 206, 206), 0 0 3px #979797, 0 0 4px #252525, 0 0 5px #1b1b1b, 0 0 6px #000000, 0 0 7px #000000;
+}
+
+.glow-black:hover {
+	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(20, 20, 20), 0 0 3px #686868, 0 0 4px #a0a0a0, 0 0 5px #cacaca, 0 0 6px #f1f1f1, 0 0 7px #ffffff;
+}
 
 #bordering {
 	border: 10px transparent;

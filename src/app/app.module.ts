@@ -7,6 +7,7 @@ import { AppMaterialModule } from './app-material/app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DpDatePickerModule} from 'ng2-date-picker';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -68,6 +69,7 @@ import { GoalFormComponent } from './goals/goal-form/goal-form.component';
 		ReactiveFormsModule,
 		ChartsModule,
 		NgbModule,
+		DpDatePickerModule,
 	],
 	entryComponents: [],
 	providers: [NeedAuthGuard],

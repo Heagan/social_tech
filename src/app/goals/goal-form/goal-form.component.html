@@ -1,3 +1,99 @@
-<p>
-  goal-form works!
-</p>
+<div class="card col-12 row">
+
+	<br>
+	<h2>Create a new goal!</h2>
+	<br>
+
+	<div class="card col-12">
+		<br>
+		<div class=col-12>
+
+			<div class=row>
+				<span class="col" style="top: 20px">Parent Goal:</span>
+				<mat-form-field class="col">
+					<select matNativeControl required>
+						<option value="None">None</option>
+					</select>
+				</mat-form-field>
+			</div>
+
+			<div class="row">
+				<span class="col">Title:</span>
+				<input class="col" required>
+			</div>
+
+			<div class=row>
+				<span class="col">Goal description:</span>
+				<textarea class="col" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"></textarea>
+			</div>
+		</div>
+
+		<div class=row>
+			<div class=col>
+				<div class=col-12>
+					<div lass=row>
+						<mat-checkbox class=row checked=false>All day</mat-checkbox>
+						<mat-checkbox class=row checked=false>Recuring</mat-checkbox>
+					</div>
+					<div class=row>
+						<span>Challenge level:</span>
+						<mat-slider thumbLabel tickInterval="1" min="1" max="10"></mat-slider>
+					</div>
+					<div class=row>
+						<span class=col>When to do?:</span>
+						<mat-form-field class=col>
+							<select matNativeControl required>
+								<option value="Exercise">Daily</option>
+								<option value="Weekly">Weekly</option>
+								<option value="Monthly">Monthly</option>
+								<option value="Yearly">Yearly</option>
+							</select>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+
+			<div class=col>
+				<div class=col-12>
+
+					<div class=row>
+						<span class=col> Start: </span>
+						<dp-date-picker class=col></dp-date-picker>
+					</div>
+					<div class=row>
+						<span class=col>End:</span>
+						<dp-date-picker class=col></dp-date-picker>
+					</div>
+					<div class=row>
+						<span class=col>Start time:</span>
+						<dp-date-picker class=col [mode]="'time'"></dp-date-picker>
+					</div>
+					<div class=row>
+						<span class=col>End time: </span>
+						<dp-date-picker class=col [mode]="'time'"></dp-date-picker>
+					</div>
+					<div class="row">
+						<span class="col">Offset:</span>
+						<input class="col" matInput [type]="'number'" [value]=1 min="1" style="background: white;" required>
+					</div>
+					<div class="row">
+						<span class="col">Max Occurrence:</span>
+						<input class="col" matInput [type]="'number'" [value]=1 min="1" style="background: white;" required>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div *ngIf="error">
+		<mat-error>{{error}}</mat-error>
+	</div>
+	<button type="submit" class="btn">Create Goal</button>
+
+	<br>
+	<br>
+</div>
+
+<div id=sp-50></div>
