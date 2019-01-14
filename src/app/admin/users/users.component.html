@@ -1,29 +1,29 @@
-<div class="row">
-	<div class="bar">
-		<h2>Search:</h2>
+<div class="bar">
+	<h2>Search:</h2>
 
-		<button #sel mat-button [matMenuTriggerFor]="menu" style="background: white; margin: 5px;">
-			By: {{searchBy}}
+	<button #sel mat-button [matMenuTriggerFor]="menu" style="background: white; margin: 5px;">
+		By: {{searchBy}}
+	</button>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item (click)="searchBy = 'Name'">
+			<span>Name</span>
 		</button>
-		<mat-menu #menu="matMenu">
-			<button mat-menu-item (click)="searchBy = 'Name'">
-				<span>Name</span>
-			</button>
-			<button mat-menu-item (click)="searchBy = 'Date'">
-				<span>Date</span>
-			</button>
-		</mat-menu>
+		<button mat-menu-item (click)="searchBy = 'Date'">
+			<span>Date</span>
+		</button>
+	</mat-menu>
+</div>
 
-
+<div class="row">
+	<div class="col-12 col-md-4">
 		<input type="text" id="mySearch" (keyup)="search()" placeholder="Search.." title="Type in a category">
-		<ul id="myMenu">
+		<ul id="myMenu" class="users-list">
 			<li *ngFor="let user of users; let i = index" (click)="selectUser(i)">
 				<a class="button"> {{user.user_id}} | {{user.first_name}}</a>
 			</li>
 		</ul>
 	</div>
-
-	<div class="">
+	<div class="col-12 col-md-8">
 		<div class="tab">
 			<button class="tablinks" (click)="Info.style.display = 'block'; Goals.style.display = 'none'; Notes.style.display = 'none';">Info</button>
 			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'block'; Notes.style.display = 'none';">Goals</button>
@@ -35,7 +35,7 @@
 		</div>
 		<div #Goals class="tabcontent" style="background-color:#ddd;">
 			<h2>Goals</h2>
-			<ul id="myMenu">
+			<ul id="myMenu2">
 				<li *ngFor="let goal of api.goalsInfo; let i = index;">
 					<span>{{goal?.goal.goal_title}}</span>
 				</li>
@@ -44,14 +44,12 @@
 		<div #Notes class="tabcontent" style="background-color:#ddd;">
 			<h2>Notes</h2>
 			<div *ngIf="((notes | async)?.data)">
-				<ul id="myMenu">
+				<ul id="myMenu2">
 					<li *ngFor="let note of ((notes | async)?.data).slice().reverse(); let i = index">
 						<span>{{note?.note}}</span>
 					</li>
 				</ul>
 			</div>
 		</div>
-
 	</div>
-
 </div>

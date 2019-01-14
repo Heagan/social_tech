@@ -1,33 +1,48 @@
-<form class="modal-content animate" action="/action_page.php">
+<div class="card " style="max-width:500px; margin:auto">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<form action="/action_page.php" style="max-width:500px;margin:auto">
-		<h2>Register Form</h2>
-		<div class="input-container">
-			<i class="fa fa-user icon"></i>
-			<input class="input-field" type="text" placeholder="Username" name="usrnm" required>
+	<form style="max-width:500px; margin:auto">
+		<br>
+		<img src="../../assets/sdp/logo/smile-logo-trans-big.png" style="width:100%;">
+		<br>
+
+
+		<div *ngIf="userGroupId != 1">
+			<div class="input-container">
+				<i class="fa fa-envelope icon"></i>
+				<input #Name class="input-field" placeholder="Name" required>
+			</div>
+
+			<div class="input-container">
+				<i class="fa fa-envelope icon"></i>
+				<input #Surname class="input-field" placeholder="Surname" required>
+			</div>
+		</div>
+
+		<div *ngIf="userGroupId == 1">
+			<div class="input-container">
+				<i class="fa fa-envelope icon"></i>
+				<input #Name class="input-field" placeholder="Company name" required>
+			</div>
 		</div>
 
 		<div class="input-container">
 			<i class="fa fa-envelope icon"></i>
-			<input class="input-field" type="text" placeholder="Email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-			 required email>
+			<input #Phone class="input-field" placeholder="Phone number" required>
 		</div>
 
 		<div class="input-container">
 			<i class="fa fa-key icon"></i>
-			<input class="input-field" type="password" placeholder="Password" name="psw" required>
+			<input #passwordText class="input-field" type="password" placeholder="Password" name="psw" required>
 		</div>
-
 		<div class="input-container">
 			<i class="fa fa-key icon"></i>
-			<input class="input-field" type="password" placeholder="Comfirm Password" name="psw" required>
+			<input #passwordText class="input-field" type="password" placeholder="Comfirm password" name="psw" required>
 		</div>
+		<div *ngIf="error">
+			<mat-error>{{error}}</mat-error>
+		</div>
+		<button type="submit" class="btn" (click)="s = true">Register</button>
 
-		<button type="submit" class="btn">Register</button>
 	</form>
 
-	<div class="container" style="background-color:#f1f1f1">
-		<button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
-	</div>
-</form>
+</div>
