@@ -21,15 +21,13 @@ export class DashboardComponent implements OnInit {
 
 	public page = 'home';
 	public quote = false;
-	public innerWidth: any;
-	public innerHeight: any;
-
+	
 	public exp: number = 7849;
-
+	
+	public innerWidth: any;
 	@HostListener('window:resize', ['$event'])
 	onResize(event) {
 		this.innerWidth = window.innerWidth;
-		this.innerHeight = window.innerHeight;
 	}
 
 	constructor(public api: APIService, public router: Router, expBar: NgbProgressbarConfig) {

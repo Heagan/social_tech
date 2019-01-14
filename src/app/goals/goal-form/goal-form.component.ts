@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
 	selector: 'app-goal-form',
@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class GoalFormComponent implements OnInit {
 
 	error: string;
+	public innerWidth: any;
+	@HostListener('window:resize', ['$event'])
+	onResize(event) {
+		this.innerWidth = window.innerWidth;
+	}
 
 	constructor() { }
 

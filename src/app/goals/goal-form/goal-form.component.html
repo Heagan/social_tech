@@ -1,10 +1,12 @@
-<div class="card col-12 row">
+<div class="over"></div>
+
+<div [ngClass]="{'card': true, 'col-12': true, 'row': true }" style="z-index: 20;">
 
 	<br>
 	<h2>Create a new goal!</h2>
 	<br>
 
-	<div class="card col-12">
+	<div [ngClass]="{'card': innerWidth > 750, 'col-12': true}">
 		<br>
 		<div class=col-12>
 
@@ -16,18 +18,18 @@
 					</select>
 				</mat-form-field>
 			</div>
-
+			<br>
 			<div class="row">
 				<span class="col">Title:</span>
 				<input class="col" required>
 			</div>
-
+			<br>
 			<div class=row>
 				<span class="col">Goal description:</span>
 				<textarea class="col" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"></textarea>
 			</div>
 		</div>
-
+		<br>
 		<div class=row>
 			<div class=col>
 				<div class=col-12>
@@ -40,8 +42,8 @@
 						<mat-slider thumbLabel tickInterval="1" min="1" max="10"></mat-slider>
 					</div>
 					<div class=row>
-						<span class=col>When to do?:</span>
-						<mat-form-field class=col>
+						<span class=col style="top: 20px">When to do?:</span>
+						<mat-form-field>
 							<select matNativeControl required>
 								<option value="Exercise">Daily</option>
 								<option value="Weekly">Weekly</option>
@@ -72,10 +74,12 @@
 						<span class=col>End time: </span>
 						<dp-date-picker class=col [mode]="'time'"></dp-date-picker>
 					</div>
+					<br>
 					<div class="row">
 						<span class="col">Offset:</span>
 						<input class="col" matInput [type]="'number'" [value]=1 min="1" style="background: white;" required>
 					</div>
+					<br>
 					<div class="row">
 						<span class="col">Max Occurrence:</span>
 						<input class="col" matInput [type]="'number'" [value]=1 min="1" style="background: white;" required>

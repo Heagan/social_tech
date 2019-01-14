@@ -5,6 +5,10 @@
 	</div>
 </div> -->
 
+<div *ngIf="displayAddNewGoalForm">
+	<app-goal-form></app-goal-form>
+</div>
+
 <div class="card">
 
 	<div class="zoom" (click)="displayAddNewGoalForm = !displayAddNewGoalForm;">
