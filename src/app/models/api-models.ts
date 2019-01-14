@@ -18,7 +18,7 @@ export interface LoginReturnDetails {
 	email: string;
 	user_password: string;
 	user_id: number;
-	v_token: number;
+	u_token: number;
 	admin: boolean;
 }
 

@@ -2,22 +2,26 @@
 
 <div id="sticky" *ngIf="api.isLoggedIn()">
 	<div class="topnav g-grd">
-		<a [ngClass]="{'button': true, 'active': page == 'home', 'ish': true }" (click)="openPage('home'); page = 'home';">
-			<mat-icon navbar style="font-size: 36px;">home</mat-icon>
-			Home
-		</a>
-		<a [ngClass]="{'button': true, 'active': page == 'goals', 'ish': true }" (click)="openPage('goals'); page = 'goals';">
-			<mat-icon navbar style="font-size: 36px;">star</mat-icon>
-			Goals
-		</a>
-		<a [ngClass]="{'button': true, 'active': page == 'notes', 'ish': true }" (click)="openPage('notes'); page = 'notes';">
-			<mat-icon navbar style="font-size: 36px;">event_note</mat-icon>
-			Notes
-		</a>
-		<a [ngClass]="{'button': true, 'active': page == 'learn', 'ish': true }" (click)="openPage('learn'); page = 'learn';">
-			<mat-icon navbar style="font-size: 36px;">school</mat-icon>
-			Learn
-		</a>
+		<div *ngIf="!api.isAdmin()">
+
+			<a [ngClass]="{'button': true, 'active': page == 'home', 'ish': true }" (click)="openPage('home'); page = 'home';">
+				<mat-icon navbar style="font-size: 36px;">home</mat-icon>
+				Home
+			</a>
+			<a [ngClass]="{'button': true, 'active': page == 'goals', 'ish': true }" (click)="openPage('goals'); page = 'goals';">
+				<mat-icon navbar style="font-size: 36px;">star</mat-icon>
+				Goals
+			</a>
+			<a [ngClass]="{'button': true, 'active': page == 'notes', 'ish': true }" (click)="openPage('notes'); page = 'notes';">
+				<mat-icon navbar style="font-size: 36px;">event_note</mat-icon>
+				Notes
+			</a>
+			<a [ngClass]="{'button': true, 'active': page == 'learn', 'ish': true }" (click)="openPage('learn'); page = 'learn';">
+				<mat-icon navbar style="font-size: 36px;">school</mat-icon>
+				Learn
+			</a>
+		</div>
+
 		<div [ngClass]="{'dash': quote}">
 			<div class="topnav-right" *ngIf="quote || innerWidth > 750">
 				<a (click)="openPage('profile')" class="button">
@@ -71,24 +75,29 @@
 				</mat-menu>
 			</div>
 
-			<a *ngIf="quote" class="g-light" (click)="newMessage()" style="width: 100%; position: absolute; bottom: 30px; right: 0; font-size: 24px;">
-				{{(motivMess | async)?.description}}
-			</a>
+			<div *ngIf="!api.isAdmin()">
 
-			<h2 *ngIf="quote" class="glow-red expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user | async)?.data.exp_points %
-				1000)) / 1000}} Weeb!</h2>
-			<ngb-progressbar *ngIf="quote" [value]="(api.getUser() | async)?.data?.exp_points % 1000" type="info" class="expbar"></ngb-progressbar>
-			<p *ngIf="quote" class="glow-blue expbar_text">
-				{{(user | async)?.data.exp_points % 1000}} / 1000
-				{{exp}}
-			</p>
+				<a *ngIf="quote" class="g-light" (click)="newMessage()" style="width: 100%; position: absolute; bottom: 30px; right: 0; font-size: 24px;">
+					{{(motivMess | async)?.description}}
+				</a>
 
-			<button class="btn-primary" style="width: 100%;  top: 64px; position: absolute; left:0;" *ngIf="!quote" (click)="quote = !quote">
-				<mat-icon>expand_more</mat-icon>
-			</button>
-			<button class="btn-primary" style="width: 100%;  bottom: 0; position: absolute; left:0;" *ngIf="quote" (click)="quote = !quote; newMessage();">
-				<mat-icon>expand_less</mat-icon>
-			</button>
+				<h2 *ngIf="quote" class="glow-red expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user |
+					async)?.data.exp_points %
+					1000)) / 1000}} Weeb!</h2>
+				<ngb-progressbar *ngIf="quote" [value]="(api.getUser() | async)?.data?.exp_points % 1000" type="info" class="expbar"></ngb-progressbar>
+				<p *ngIf="quote" class="glow-blue expbar_text">
+					{{(user | async)?.data.exp_points % 1000}} / 1000
+					{{exp}}
+				</p>
+
+				<button class="btn-primary" style="width: 100%;  top: 64px; position: absolute; left:0;" *ngIf="!quote" (click)="quote = !quote">
+					<mat-icon>expand_more</mat-icon>
+				</button>
+				<button class="btn-primary" style="width: 100%;  bottom: 0; position: absolute; left:0;" *ngIf="quote" (click)="quote = !quote; newMessage();">
+					<mat-icon>expand_less</mat-icon>
+				</button>
+			</div>
+
 		</div>
 
 

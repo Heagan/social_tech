@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit {
 		console.log("Logging in");
 
 
-		
+
 		this.loading = true;
 		login.subscribe(
 			res => {
@@ -46,9 +46,14 @@ export class SigninComponent implements OnInit {
 				console.log("Logged " + this.api.loginInfo);
 				if (this.api.loginInfo) {
 					localStorage.setItem('logged_in', 'true');
-					// localStorage.setItem('token', this.api.loginInfo.v_token.toString());
+					localStorage.setItem('token', this.api.loginInfo.u_token.toString());
 					this.api.refreshEverything();
-					this.router.navigateByUrl('/home');
+					if (this.api.isAdmin()) {
+						this.router.navigateByUrl('/admin');
+					} else {
+						this.router.navigateByUrl('/home');
+					}
+
 				}
 				this.loading = false;
 			}

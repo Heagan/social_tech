@@ -13,7 +13,8 @@ export class SignupComponent implements OnInit {
 	//2 - admin
 
 	public id: string;
-	userGroupId: number = 0;
+	public userGroupId: number = 0;
+	public error: string;
 
 	constructor(private route: ActivatedRoute) { }
 

@@ -32,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { QuotesComponent } from './admin/quotes/quotes.component';
 import { LcentreComponent } from './admin/lcentre/lcentre.component';
+import { GoalFormComponent } from './goals/goal-form/goal-form.component';
 
 @NgModule({
 	declarations: [
@@ -55,6 +56,7 @@ import { LcentreComponent } from './admin/lcentre/lcentre.component';
 		UsersComponent,
 		QuotesComponent,
 		LcentreComponent,
+		GoalFormComponent,
 	],
 	imports: [
 		BrowserModule,
