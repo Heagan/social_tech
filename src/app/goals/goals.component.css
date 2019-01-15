@@ -1,3 +1,20 @@
 .eft {
 	left: 50%;
 }
+
+.goal {
+	background: rgb(0, 183, 255);
+}
+
+.com {
+	background: linear-gradient(to left, gold, rgb(255, 243, 176), gold);
+	color: black;
+}
+
+.goal.com {
+	background: linear-gradient(to left, gold, rgb(0, 183, 255));
+}
+
+.coll {
+	background: greenyellow;
+}

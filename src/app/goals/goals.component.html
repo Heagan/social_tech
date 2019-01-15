@@ -1,8 +1,10 @@
-<div [ngClass]="{'card': innerWidth > 750}" *ngIf="displayAddNewGoalForm">
-	<div id=sp-50></div>
-	<button [ngClass]="{'eft': innerWidth < 750}" mat-raised-button color="warn" (click)="displayAddNewGoalForm = false">Close</button>
-	<app-goal-form></app-goal-form>
+<div *ngIf="displayAddNewGoalForm" id="overlay">
 	<div id=sp></div>
+	<div id=sp-50></div>
+	<app-goal-form></app-goal-form>
+	<button mat-raised-button color="warn" (click)="displayAddNewGoalForm = false" style="width: 80%; margin: 0px 0px 0px 10%">Close</button>
+	<div id=sp></div>
+	<div id=sp-50></div>
 </div>
 
 <div id="sp"></div>
@@ -18,15 +20,31 @@
 
 <div *ngIf="goals">
 	<div *ngFor="let goal of goals">
-		<div class="card" *ngIf="!goal.goal.parent_goal_id">
-			<button [ngClass]="'collapsible'" (click)="goal.collapse = !goal.collapse"> {{goal.goal.goal_title}}</button>
-			<div *ngIf="goal.collapse">
-				<span>OPEN</span>
-				<p *ngFor="let com of getComFromId(goal.goal.goal_id)">
-					{{com.goal.goal_title}}
-				</p>
+		<div class="card" *ngIf="!goal.goal.parent_goal_id" style="background: transparent;">
+
+			<div class=row>
+				<button mat-raised-button [ngClass]="{'col': true, 'collapsible': true, 'goal': goal.children.length > 0, 'com': goal.isComplete()}"
+				 (click)="goal.collapse = !goal.collapse"> {{goal.goal.goal_title}}</button>
+				<button class="col-1" mat-icon-button color="warn" (click)="goal.completed = true">
+					<mat-icon>check_box</mat-icon>
+				</button>
 			</div>
+
+			<div *ngIf="goal.collapse">
+
+				<div class=row *ngFor="let com of goal.children">
+					<button mat-raised-button [ngClass]="{'col': true, 'collapsible': true, 'goal': goal?.children.length > 0, 'com': goal?.isComplete()}"
+					 (click)="goal.collapse = !goal.collapse">{{com.goal.goal_title}}</button>
+					<button class="col-1" mat-icon-button color="warn">
+						<mat-icon>check_box</mat-icon>
+					</button>
+				</div>
+
+			</div>
+
+
 		</div>
 		<div id="sp" *ngIf="!goal.goal.parent_goal_id"></div>
 	</div>
 </div>
+<div id="sp-50"></div>

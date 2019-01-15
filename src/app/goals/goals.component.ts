@@ -8,6 +8,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { APIService } from '../api.service';
 import { GoalInfoReturn, CompletedGoalInfoReturn } from '../models/api-models';
 import { Observable } from 'rxjs';
+import { log } from 'util';
 
 @Injectable({
 	providedIn: 'root'
@@ -35,7 +36,17 @@ export class GoalsComponent implements OnInit {
 		this.getCommitments();
 	}
 
+	setUpGoalChildren() {
+		console.log("setUpGoalChildren");
+		
+		for (var goal of this.goals) {
+			goal.children = this.getComFromId(goal.goal.goal_id);
+		}
+	}
+
 	getCommitments() {
+		console.log("getCommitments");
+		
 		var goalInfo: GoalInfoReturn[];
 		var comGoalInfo: CompletedGoalInfoReturn[];
 		this.goals = new Array;
@@ -47,12 +58,13 @@ export class GoalsComponent implements OnInit {
 			goalInfo = res;
 			this.api.getCommitmentsGoals().subscribe(
 				res => {
+					//get completed goals info
 					comGoalInfo = res;
-					console.log("get goal " + res);
 					//for each goal
 					for (var info of goalInfo) {
 						//empty array
 						var comArray = new Array();
+
 						//for each goal detail
 						for (var com of comGoalInfo) {
 							// if goal detail belongs to goal
@@ -61,13 +73,10 @@ export class GoalsComponent implements OnInit {
 								comArray.push(com);
 							}
 						}
-						//there must not be children
-						if (info.parent_goal_id == null)
-							//make a goal class with the goal, and its detail goals
-							this.goals.push(new Goal(info, comArray));
-						// console.log("Current goal " + info.goal_title);
-
+						//make a goal class with the goal, and its detail goals
+						this.goals.push(new Goal(info, comArray));
 					}
+					this.setUpGoalChildren();
 				}
 			)
 		});
@@ -76,6 +85,8 @@ export class GoalsComponent implements OnInit {
 	}
 
 	getComFromId(id: number): Goal[] {
+		console.log("getComFromId");
+		
 		var comms: Goal[] = new Array();
 
 		for (var idx in this.goals) {
@@ -94,5 +105,10 @@ export class Goal {
 	constructor(public goal: GoalInfoReturn, public complete: CompletedGoalInfoReturn[]) { };
 
 	public collapse: boolean = false;
+	public children: Goal[] = new Array();
+	public completed: boolean = false;
 
+	isComplete(): boolean {
+		return this.completed;
+	}
 }
