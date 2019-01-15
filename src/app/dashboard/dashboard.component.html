@@ -37,29 +37,16 @@
 				</button>
 
 				<mat-menu #noti="matMenu">
-					<button mat-menu-item>
+					<button mat-menu-item (click)="allseen()">
 						<mat-icon>clear</mat-icon>
 						<span>Mark all as read</span>
 					</button>
 
 					<div *ngFor="let not of nofication | async">
-						<button mat-menu-item [ngClass]="{'seen': not.seen}" (click)="not.seen = true">
+						<button mat-menu-item [ngClass]="{'seen': not.seen}" (click)="not.seen = true; api.setNotiAsSeen(not.id)">
 							<span>{{not.notification}}</span>
 						</button>
 					</div>
-<!-- 
-					<button mat-menu-item>
-						<span>Havnt checked in for today</span>
-					</button>
-					<button mat-menu-item>
-						<span>Need to get that thing done</span>
-					</button>
-					<button mat-menu-item>
-						<span>Need to get that thing done</span>
-					</button>
-					<button mat-menu-item>
-						<span>Need to get that thing done</span>
-					</button> -->
 				</mat-menu>
 
 				<mat-menu #menu="matMenu">

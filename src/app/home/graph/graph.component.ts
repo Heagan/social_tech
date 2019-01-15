@@ -14,13 +14,21 @@ export class GraphComponent implements OnInit {
 
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Core Energy State'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Goal Progress'},
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Core Energy State'},	// data points correlate to dates
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Goal Progress'},		// data types correlate to type of activity 
     {data: [18, 48, 77, 9, 100, 27, 40], label: 'Target'}
   ];
 
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions:any = {
+/*
+psuedo code
+
+[activity by user]
+count unique dates (put into array)
+then for each date match count occurances where activity is specific acitivity
+*/
+
+  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July']; // this will be dates
+  public lineChartOptions:any = {																		// data points will be how many times an action took place on the given day. (mvp will be in the last week)
     responsive: true
   };
   public lineChartColors:Array<any> = [

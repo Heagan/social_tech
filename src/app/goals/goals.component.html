@@ -21,6 +21,7 @@
 		<div class="card" *ngIf="!goal.goal.parent_goal_id">
 			<button [ngClass]="'collapsible'" (click)="goal.collapse = !goal.collapse"> {{goal.goal.goal_title}}</button>
 			<div *ngIf="goal.collapse">
+				<span>OPEN</span>
 				<p *ngFor="let com of getComFromId(goal.goal.goal_id)">
 					{{com.goal.goal_title}}
 				</p>

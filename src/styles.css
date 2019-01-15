@@ -68,7 +68,7 @@
 
 .card {
 	text-shadow: 1px 1px white;
-	background: rgba(91, 224, 102, 0.3);
+	background: rgba(159, 231, 165, 0.753);
 	/* background: transparent; */
 	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 	margin: 0 auto;
@@ -90,7 +90,7 @@
 }
 
 .g-grd {
-	background: linear-gradient(to left bottom, #003300, #30b847)
+	background: linear-gradient(to bottom, #347e34, #8fce99)
 }
 
 .g-grd2 {
@@ -110,11 +110,12 @@
 }
 
 .g-light {
-	background: linear-gradient(to bottom, rgba(255, 0, 0, 0), lime, lime)
+	background: linear-gradient(to bottom, rgba(255, 0, 0, 0), #8fce99, #8fce99)
 }
 
 .bg-image {
 	background-image: url("./assets/pictures/27.jpg");
+	background-color: #8b8d8b;
 	filter: blur(8px);
 	-webkit-filter: blur(8px);
 	background-position: center;

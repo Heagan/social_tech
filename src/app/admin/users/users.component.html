@@ -22,19 +22,24 @@
 		<input type="text" id="mySearch" (keyup)="search()" placeholder="Search.." title="Type in a category">
 		<ul id="myMenu" class="users-list">
 			<li *ngFor="let user of users; let i = index" (click)="selectUser(i)">
-				<a class="button"> {{user.user_id}} | {{user.first_name}}</a>
+				<a class="button">{{user?.first_name}} {{user?.last_name}}</a>
 			</li>
 		</ul>
 	</div>
 	<div class="col-12 col-md-8">
 		<div class="tab">
-			<button class="tablinks" (click)="Info.style.display = 'block'; Goals.style.display = 'none'; Notes.style.display = 'none';">Info</button>
-			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'block'; Notes.style.display = 'none';">Goals</button>
-			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'none'; Notes.style.display = 'block';">Notes</button>
+			<button class="tablinks" (click)="Info.style.display = 'block'; Goals.style.display = 'none'; Notes.style.display = 'none'; Activity.style.display = 'none';">Info</button>
+			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'block'; Notes.style.display = 'none'; Activity.style.display = 'none';">Goals</button>
+			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'none'; Notes.style.display = 'block'; Activity.style.display = 'none';">Notes</button>
+			<button class="tablinks" (click)="Info.style.display = 'none'; Goals.style.display = 'none'; Notes.style.display = 'none';  Activity.style.display = 'block';">Activity</button>
 		</div>
 		<div #Info class="tabcontent" style="background-color:#ddd; display: block;">
 			<h2>{{selUser?.first_name}} {{selUser?.last_name}}</h2>
-			<p>{{selUser?.phone_number}}</p>
+			<p>Phone number: {{selUser?.phone_number}}</p>
+			<p>Email: {{selUser?.email}}</p>
+			<p>Experience points: {{selUser?.exp_points}}</p>
+			<p>Type: {{groupUser()}}</p>
+
 		</div>
 		<div #Goals class="tabcontent" style="background-color:#ddd;">
 			<h2>Goals</h2>
@@ -53,6 +58,10 @@
 					</li>
 				</ul>
 			</div>
+		</div>
+		<div #Activity class="tabcontent" style="background-color:#ddd;">
+			<h2>Activities</h2>
+			<app-graph></app-graph>
 		</div>
 	</div>
 </div>

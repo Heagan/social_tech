@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
 	notes: Observable<NoteReturnDetails[]>;
 
 	searchBy = 'Name';
-	selUser;
+	selUser: UserFields;
 
 	constructor(public api: APIService, public goalsComponent: GoalsComponent) { }
 
@@ -32,6 +32,20 @@ export class UsersComponent implements OnInit {
 				this.users = res.data;
 			}
 		);
+	}
+
+	groupUser() {
+		if (this.selUser)
+		switch (this.selUser.user_group_id) {
+			case (0):
+				return "Individual"
+			case (1):
+				return "Business"
+			case (2):
+				return "Administrator"
+			default:
+				return "Unknown"
+		}
 	}
 
 	selectUser(i) {
@@ -62,6 +76,7 @@ export class UsersComponent implements OnInit {
 
 	search() {
 		var input, filter, ul, li, a, i;
+
 		input = document.getElementById("mySearch");
 		filter = input.value.toUpperCase();
 		ul = document.getElementById("myMenu");

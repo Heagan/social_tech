@@ -40,6 +40,21 @@ export class DashboardComponent implements OnInit {
 		expBar.height = '20px';
 	}
 
+	allseen() {
+		this.notiNum = 0;
+		if (this.nofication)
+			this.nofication.subscribe(
+				res => {
+					this.notiNum = 0;
+					if (res)
+						for (var n of res) {
+							if (!n.seen)
+								this.api.setNotiAsSeen(n.id);
+						}
+				}
+			)
+	}
+
 	getNotiCount() {
 		if (this.nofication)
 			this.nofication.subscribe(

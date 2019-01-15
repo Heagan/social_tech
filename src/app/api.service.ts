@@ -109,6 +109,25 @@ export class APIService {
 		);
 	}
 
+	public setNotiAsSeen(id: number) {
+		if (!this.isLoggedIn())
+			return undefined;
+		console.log("SEEN!");
+		this.http.put<DefaultReturn>(this.setNotiSeenUrl + id, '').pipe(
+			retry(3),
+			catchError(this.errorHandler)
+		).subscribe(
+			res => {
+				console.log(res.success);
+				console.log(res.message);
+			}
+		);
+	}
+
+	public addNotification() {
+		
+	}
+
 	public getAllUsersFromDB(): Observable<DefaultReturn> {
 		if (!this.isLoggedIn())
 			return undefined;

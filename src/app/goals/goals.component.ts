@@ -9,13 +9,6 @@ import { APIService } from '../api.service';
 import { GoalInfoReturn, CompletedGoalInfoReturn } from '../models/api-models';
 import { Observable } from 'rxjs';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-	isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-		const isSubmitted = form && form.submitted;
-		return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-	}
-}
-
 @Injectable({
 	providedIn: 'root'
 })
@@ -26,11 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class GoalsComponent implements OnInit {
 
-
 	displayAddNewGoalForm: boolean = false;
-	newGoalTitle = new FormControl('', [Validators.minLength(5), Validators.required]);
-	newGoalItem = new FormControl('', [Validators.minLength(5), Validators.required]);
-	matcher = new MyErrorStateMatcher();
 
 	goals: Goal[] = new Array();
 
@@ -44,10 +33,6 @@ export class GoalsComponent implements OnInit {
 
 	ngOnInit() {
 		this.getCommitments();
-	}
-
-	addGoal() {
-		//this.goals.push(new Goal(this.newGoalTitle.value, [this.newGoalItem.value]));
 	}
 
 	getCommitments() {
