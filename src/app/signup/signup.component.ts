@@ -4,6 +4,7 @@ import { SignUpDetails, SignUpReturn } from '../models/api-models';
 import { APIService } from '../api.service';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
 	isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -38,7 +39,7 @@ export class SignupComponent implements OnInit {
 	public signupDetail: SignUpDetails = new SignUpDetails;
 	public signUpReturn: SignUpReturn;
 
-	constructor(public api: APIService, private route: ActivatedRoute) { }
+	constructor(public api: APIService, private route: ActivatedRoute, public router: Router) { }
 
 	ngOnInit() {
 		this.route.queryParams.subscribe(params => {
@@ -111,6 +112,8 @@ export class SignupComponent implements OnInit {
 			res => {
 				console.log(res.success);
 				console.log(res.message);
+				if (res.success)
+					this.router.navigateByUrl('login');
 			}
 		);
 	}
