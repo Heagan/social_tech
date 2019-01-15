@@ -13,8 +13,8 @@
 
 .spinner {
 	z-index: 1;
-	left: 50%;
-	top: 50%;
+	left: 47%;
+	top: 49%;
     position: absolute;
 }
 
@@ -155,9 +155,23 @@ span.psw {
 	}
 }
 
-/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 600px) {
+	.spinner {
+		z-index: 1;
+		left: 40%;
+		top: 50%;
+		position: absolute;
+	}
+}
 
 @media screen and (max-width: 300px) {
+	.spinner {
+		z-index: 1;
+		left: 40%;
+		top: 60%;
+		position: absolute;
+	}
+
 	span.psw {
 		display: block;
 		float: none;

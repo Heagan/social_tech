@@ -1,14 +1,10 @@
-<!-- <div class="card">
-	<div class="button" [ngClass]="'hidden: isDisabled'" (click)="isDisabled = !isDisabled;">
-		Click me!
-		{{isDisabled}}
-	</div>
-</div> -->
-
-<div *ngIf="displayAddNewGoalForm">
+<div [ngClass]="{'card': innerWidth > 750}" *ngIf="displayAddNewGoalForm">
+	<div id=sp-50></div>
+	<button [ngClass]="{'eft': innerWidth < 750}" mat-raised-button color="warn" (click)="displayAddNewGoalForm = false">Close</button>
 	<app-goal-form></app-goal-form>
+	<div id=sp></div>
 </div>
-
+<div id="sp"></div>
 <div class="card">
 
 	<div class="zoom" (click)="displayAddNewGoalForm = !displayAddNewGoalForm;">
@@ -16,29 +12,7 @@
 			<i class="material-icons md-36">add_circle_outline</i>
 		</a>
 	</div>
-	<strong>New Goal</strong>
 
-	<div *ngIf="displayAddNewGoalForm" class="card">
-		<mat-card>
-			<br>
-			<mat-form-field>
-				<u><strong>Title</strong></u>
-				<input matInput [formControl]="newGoalTitle">
-			</mat-form-field>
-			<br>
-			<mat-form-field>
-				<u><strong>Item</strong></u>
-				<input matInput [formControl]="newGoalItem">
-			</mat-form-field>
-			<br>
-			<br>
-			<mat-error *ngIf="newGoalTitle.invalid || newGoalItem.invalid" style="color: red;">
-				Not enough information!
-			</mat-error>
-		</mat-card>
-		<button class="btn-primary" (click)="addGoal()" [disabled]="newGoalTitle.invalid || newGoalItem.invalid">Add Goal!</button>
-
-	</div>
 </div>
 
 <div id="sp-10"></div>
@@ -48,7 +22,7 @@
 <div *ngIf="goals">
 	<div *ngFor="let goal of goals">
 		<div class="card" *ngIf="!goal.goal.parent_goal_id">
-			<button [ngClass]="'collapsible'" (click)="goal.collapse = !goal.collapse" > {{goal.goal.goal_title}}</button>
+			<button [ngClass]="'collapsible'" (click)="goal.collapse = !goal.collapse"> {{goal.goal.goal_title}}</button>
 			<div *ngIf="goal.collapse">
 				<p *ngFor="let com of getComFromId(goal.goal.goal_id)">
 					{{com.goal.goal_title}}

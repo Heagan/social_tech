@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, HostListener } from '@angular/core';
 
 import { NgClass } from '@angular/common';
 
@@ -33,6 +33,12 @@ export class GoalsComponent implements OnInit {
 	matcher = new MyErrorStateMatcher();
 
 	goals: Goal[] = new Array();
+
+	public innerWidth: any;
+	@HostListener('window:resize', ['$event'])
+	onResize(event) {
+		this.innerWidth = window.innerWidth;
+	}
 
 	constructor(public api: APIService) { }
 
