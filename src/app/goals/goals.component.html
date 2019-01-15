@@ -25,7 +25,7 @@
 			<div class=row>
 				<button mat-raised-button [ngClass]="{'col': true, 'collapsible': true, 'goal': goal.children.length > 0, 'com': goal.isComplete()}"
 				 (click)="goal.collapse = !goal.collapse"> {{goal.goal.goal_title}}</button>
-				<button class="col-1" mat-icon-button color="warn" (click)="goal.completed = true">
+				<button class="col-1" mat-icon-button color="warn" (click)="goal.completed = !goal.completed">
 					<mat-icon>check_box</mat-icon>
 				</button>
 			</div>
