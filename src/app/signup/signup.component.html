@@ -1,50 +1,57 @@
 <div class="card " style="max-width:500px; margin:auto">
 
-	<form style="max-width:500px; margin:auto">
+	<div style="max-width:500px; margin:auto">
 		<br>
 		<img src="../../assets/sdp/logo/smile-logo-trans-big.png" style="width:100%;">
 		<br>
 		<br>
 
 
-		<div *ngIf="userGroupId != 1">
+		<div *ngIf="signUpReturn?.user_group_id != 1 || 1 == 1">
 			<div class="input-container">
 				<i class="fa fa-envelope icon"></i>
-				<input #Name class="input-field" placeholder="Name" required>
+				<input #Name (keyup)="name = Name.value; isValid();"
+				 class="input-field" placeholder="Name">
 			</div>
 
 			<div class="input-container">
 				<i class="fa fa-envelope icon"></i>
-				<input #Surname class="input-field" placeholder="Surname" required>
+				<input #Surname (keyup)="surname = Surname.value; isValid();" class="input-field"
+				 placeholder="Surname" required>
 			</div>
+
 		</div>
 
-		<div *ngIf="userGroupId == 1">
+		<div *ngIf="signUpReturn?.user_group_id == 1 || 1 == 1">
 			<div class="input-container">
 				<i class="fa fa-envelope icon"></i>
-				<input #Name class="input-field" placeholder="Company name" required>
+				<input #Name (keyup)="name = Name.value; isValid();" class="input-field" placeholder="Company name"
+				 required>
 			</div>
 		</div>
 
 		<div class="input-container">
 			<i class="fa fa-envelope icon"></i>
-			<input #Phone class="input-field" placeholder="Phone number" required>
+			<input #Phone (keyup)="phone = Phone.value; isValid();" class="input-field" placeholder="Phone number"
+			 required>
 		</div>
 
 		<div class="input-container">
 			<i class="fa fa-key icon"></i>
-			<input #passwordText class="input-field" type="password" placeholder="Password" name="psw" required>
+			<input #Password (keyup)="pswd = Password.value; isValid();" class="input-field" type="password" placeholder="Password"
+			 name="psw">
 		</div>
+
 		<div class="input-container">
 			<i class="fa fa-key icon"></i>
-			<input #passwordText class="input-field" type="password" placeholder="Comfirm password" name="psw" required>
+			<input #Password2 (keyup)="pswd2 = Password2.value; isValid();" class="input-field" type="password" placeholder="Comfirm password"
+			 name="psw" required>
 		</div>
-		<div *ngIf="error">
-			<mat-error>{{error}}</mat-error>
-		</div>
-		<button type="submit" class="btn">Register</button>
+		<mat-error>{{error}}</mat-error>
 
-	</form>
+		<button [disabled]="!isValid()" type="submit" class="btn" (click)="signup()">Register</button>
+
+	</div>
 	<br>
 	<br>
 </div>

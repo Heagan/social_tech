@@ -18,7 +18,7 @@ import { NeedAuthGuard } from './auth.guard';
 const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{ path: 'login', component: SigninComponent},
-	{ path: 'signup', component: SignupComponent },
+	{ path: 'signup', component: SignupComponent},
 	{ path: 'notes', component: NotesComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'home', component: HomeComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'goals', component: GoalsComponent, canActivate: [NeedAuthGuard]  },

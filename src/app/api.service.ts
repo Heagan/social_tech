@@ -20,7 +20,9 @@ import {
 	UserFields,
 	CompletedGoalInfoReturn,
 	MotivMessReturn,
-	CheckinReturn
+	CheckinReturn,
+	SignUpDetails,
+	SignUpReturn
 } from './models/api-models'
 
 @Injectable({
@@ -34,6 +36,13 @@ export class APIService {
 	changeMessage(message: string) {
 		this.messageSource.next(message)
 	}
+
+	public notiUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notifications/all/";
+	public createNotiUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notifications/create"; //user_id, notification, time_date
+	public setNotiSeenUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notifications/set_as_seen/" //:id
+
+	public signUpUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/signup" // first_name, last_name, user_password, phone_number, v_token, email, user_group_id
+	public signupVerifyUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/verify/";
 
 	public checkinUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/checkins";
 	public motivMessUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/motivational_r";
@@ -79,6 +88,21 @@ export class APIService {
 		if (this.loginInfo)
 			return this.loginInfo.admin;
 		return false;
+	}
+
+	public signup(signupDetails: SignUpDetails) {
+		console.log("Signup attempt");
+		return this.http.post<DefaultReturn>(this.signUpUrl, signupDetails).pipe(
+			retry(3),
+			catchError(this.errorHandler)
+		);
+	}
+
+	public verifySignupToken(token: string) {
+		return this.http.get<DefaultReturn>(this.signupVerifyUrl + token).pipe(
+			retry(3),
+			catchError(this.errorHandler)
+		);
 	}
 
 	public getAllUsersFromDB(): Observable<DefaultReturn> {

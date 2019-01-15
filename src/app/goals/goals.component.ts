@@ -54,7 +54,7 @@ export class GoalsComponent implements OnInit {
 		var goalInfo: GoalInfoReturn[];
 		var comGoalInfo: CompletedGoalInfoReturn[];
 		this.goals = new Array;
-		
+
 		this.api.getGoals().subscribe(res => {
 			if (!res) {
 				return;

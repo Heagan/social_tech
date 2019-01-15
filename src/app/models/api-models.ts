@@ -101,6 +101,21 @@ export class CheckinReturn {
 	q34: string = "0";
 }
 
+export class SignUpDetails {
+	first_name: string;
+	last_name: string;
+	user_password: string;
+	phone_number: string;
+	v_token: string;
+	email: string;
+	user_group_id: number;
+}
+
+export interface SignUpReturn {
+	email: string;
+	user_group_id: string;
+}
+
 export interface DefaultReturn {
 	success: boolean;
 	message: string;

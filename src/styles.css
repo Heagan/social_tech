@@ -68,7 +68,7 @@
 
 .card {
 	text-shadow: 1px 1px white;
-	background: rgba(157, 238, 157, 0.3);
+	background: rgba(91, 224, 102, 0.3);
 	/* background: transparent; */
 	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 	margin: 0 auto;
@@ -91,6 +91,10 @@
 
 .g-grd {
 	background: linear-gradient(to left bottom, #003300, #30b847)
+}
+
+.g-grd2 {
+	background: #86c232;
 }
 
 .g-grdo {
