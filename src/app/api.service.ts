@@ -22,7 +22,8 @@ import {
 	MotivMessReturn,
 	CheckinReturn,
 	SignUpDetails,
-	SignUpReturn
+	SignUpReturn,
+	NotiReturn
 } from './models/api-models'
 
 @Injectable({
@@ -70,6 +71,9 @@ export class APIService {
 
 	public goalsSource = new BehaviorSubject<GoalInfoReturn[]>(undefined);
 	public goals = <Observable<GoalInfoReturn[]>>this.goalsSource.asObservable();
+
+	public notiSource = new BehaviorSubject(undefined);
+	public noti = <Observable<NotiReturn[]>>this.notiSource.asObservable();
 
 	public goalsInfo: Goal[];
 
@@ -120,6 +124,16 @@ export class APIService {
 			return undefined;
 		console.log("Getting user info");
 		return this.http.get<DefaultReturn>(this.usersUrl + this.loginInfo.user_id).pipe(
+			retry(3),
+			catchError(this.errorHandler)
+		);
+	}
+
+	public getNotificationsFromDB(): Observable<DefaultReturn> {
+		if (!this.isLoggedIn())
+			return undefined;
+		console.log("Getting notifications info");
+		return this.http.get<DefaultReturn>(this.notiUrl + this.loginInfo.user_id).pipe(
 			retry(3),
 			catchError(this.errorHandler)
 		);
@@ -214,6 +228,10 @@ export class APIService {
 		this.getNotesFromDB().subscribe(res => this.notesSource.next(res), error => console.error(error));
 	}
 
+	public refreshNotification() {
+		this.getNotificationsFromDB().subscribe(res => this.notiSource.next(res.data), error => console.error(error));
+	}
+
 	public refreshGoals() {
 		this.getGoalsFromDB().subscribe(
 			res => {
@@ -239,14 +257,19 @@ export class APIService {
 	}
 
 	public refreshEverything() {
+		this.refreshUser();
 		this.refreshGoals();
 		this.refreshNotes();
-		this.refreshUser();
 		this.refreshMotivMess();
+		this.refreshNotification();
 	}
 
 	public getMotivMess(): Observable<MotivMessReturn> {
 		return this.motivMess;
+	}
+
+	public getNotification(): Observable<NotiReturn[]> {
+		return this.noti;
 	}
 
 	public getUser(): Observable<UserFields> {

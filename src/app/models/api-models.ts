@@ -116,6 +116,20 @@ export interface SignUpReturn {
 	user_group_id: string;
 }
 
+export interface NotiCreate {
+	user_id: number;
+	notification: string;
+	time_date: string;
+}
+
+export interface NotiReturn {
+	id: number;
+	user_id: number;
+	notification: string;
+	time_date: string;
+	seen: boolean;
+}
+
 export interface DefaultReturn {
 	success: boolean;
 	message: string;

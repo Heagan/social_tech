@@ -179,3 +179,8 @@ body {
 		width: 25%;
 	}
 }
+
+
+.seen {
+	background: grey;
+}

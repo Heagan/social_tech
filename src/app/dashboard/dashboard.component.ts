@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { APIService } from '../api.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { UserFields, MotivMessReturn } from '../models/api-models';
+import { UserFields, MotivMessReturn, NotiReturn } from '../models/api-models';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
@@ -18,12 +18,14 @@ export class DashboardComponent implements OnInit {
 
 	user: Observable<UserFields>;
 	motivMess: Observable<MotivMessReturn>;
+	nofication: Observable<NotiReturn[]>;
+	notiNum: number = 0;
 
 	public page = 'home';
 	public quote = false;
-	
+
 	public exp: number = 7849;
-	
+
 	public innerWidth: any;
 	@HostListener('window:resize', ['$event'])
 	onResize(event) {
@@ -38,7 +40,23 @@ export class DashboardComponent implements OnInit {
 		expBar.height = '20px';
 	}
 
+	getNotiCount() {
+		if (this.nofication)
+			this.nofication.subscribe(
+				res => {
+					this.notiNum = 0;
+					if (res)
+						for (var n of res) {
+							if (!n.seen)
+								this.notiNum++;
+						}
+				}
+			)
+		return this.notiNum;
+	}
+
 	ngOnInit() {
+		this.nofication = this.api.getNotification();
 		this.innerWidth = window.innerWidth;
 		this.user = this.api.getUser();
 		this.motivMess = this.api.getMotivMess();

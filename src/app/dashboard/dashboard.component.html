@@ -30,7 +30,7 @@
 				</a>
 
 				<button mat-icon-button [matMenuTriggerFor]="noti" style="background: white; margin: 5px;">
-					<mat-icon navbar matBadge="4" matBadgeColor="warn">notifications</mat-icon>
+					<mat-icon navbar [matBadge]="getNotiCount()" matBadgeColor="warn">notifications</mat-icon>
 				</button>
 				<button mat-icon-button [matMenuTriggerFor]="menu" style="background: white; margin: 5px;">
 					<mat-icon>more_vert</mat-icon>
@@ -39,8 +39,15 @@
 				<mat-menu #noti="matMenu">
 					<button mat-menu-item>
 						<mat-icon>clear</mat-icon>
-						<span>Clear All</span>
+						<span>Mark all as read</span>
 					</button>
+
+					<div *ngFor="let not of nofication | async">
+						<button mat-menu-item [ngClass]="{'seen': not.seen}" (click)="not.seen = true">
+							<span>{{not.notification}}</span>
+						</button>
+					</div>
+<!-- 
 					<button mat-menu-item>
 						<span>Havnt checked in for today</span>
 					</button>
@@ -52,7 +59,7 @@
 					</button>
 					<button mat-menu-item>
 						<span>Need to get that thing done</span>
-					</button>
+					</button> -->
 				</mat-menu>
 
 				<mat-menu #menu="matMenu">

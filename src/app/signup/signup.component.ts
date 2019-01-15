@@ -99,8 +99,6 @@ export class SignupComponent implements OnInit {
 	}
 
 	signup() {
-		console.log("SIGN UP!");
-
 		this.signupDetail.first_name = this.name;
 		this.signupDetail.last_name = this.surname;
 		this.signupDetail.user_password = this.pswd;
