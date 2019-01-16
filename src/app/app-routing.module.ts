@@ -3,11 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './home/home.component';
 import { GoalsComponent } from './goals/goals.component';
-import { GoalFormComponent } from './goals/goal-form/goal-form.component';
 import { ProfileCardComponent } from "./profile-card/profile-card.component";
 import { NotesComponent } from './notes/notes.component';
 import { CheckInViewComponent } from './check-in-view/check-in-view.component';
-import { LoginComponent } from './login/login.component';
 import { LearnComponent } from './learn/learn.component';
 import { SigninComponent } from './signin/signin.component';
 import { AdminComponent } from './admin/admin.component';

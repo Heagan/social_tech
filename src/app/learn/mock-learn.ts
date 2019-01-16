@@ -24,6 +24,34 @@ export var LEARN_CARDS = [
 		picUrl: "https://static01.nyt.com/images/2018/11/04/autossell/04apps1/merlin_145494774_8ef02aa0-0077-49af-9a43-733a1ae7716d-videoLarge.jpg"
 	}),
 	new LearnCard({
+		id: 4,
+		title: "Teachers’ Voices",
+		note: "",
+		url: "https://www.nytimes.com/2018/10/31/learning/teachers-voices.html?rref=collection%2Fsectioncollection%2Feducation-learning",
+		picUrl: "https://static01.nyt.com/images/2018/11/04/learning/04LEARNING-COVER/04LEARNING-COVER-videoLarge.jpg"
+	}),
+	new LearnCard({
+		id: 5,
+		title: "Life Is Complicated: Distance Learning Helps",
+		note: "",
+		url: "",
+		picUrl: "https://static01.nyt.com/images/2018/11/04/learning/04distance1/04distance1-videoLarge.jpg"
+	}),
+	new LearnCard({
+		id: 6,
+		title: "Heroin Addiction Explained: How Opioids Hijack the Brain",
+		note: "",
+		url: "",
+		picUrl: "https://static01.nyt.com/images/2018/12/19/us/opioids-explainer-static-promo/opioids-explainer-static-promo-mediumThreeByTwo210-v2.png"
+	}),
+	new LearnCard({
+		id: 7,
+		title: "Pens to Power: The Learning Network in Print",
+		note: "",
+		url: "",
+		picUrl: "https://static01.nyt.com/images/2018/06/06/learning/06StudentVoice3/StudentVoice3-mediumThreeByTwo210.jpg"
+	}),
+	new LearnCard({
 		id: 3,
 		title: "We need balance",
 		note: "Tips on how to balance the important parts in your life!",

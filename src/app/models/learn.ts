@@ -12,4 +12,5 @@ export class LearnCard {
 		this.url = learnCard.url;
 		this.picUrl = learnCard.picUrl;
 	}
+
 };

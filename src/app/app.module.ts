@@ -14,7 +14,6 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GoalsComponent } from './goals/goals.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
-import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -27,8 +26,6 @@ import { GraphComponent } from './home/graph/graph.component';
 import { LearnComponent } from './learn/learn.component';
 import { APIService } from './api.service';
 import { NeedAuthGuard } from './auth.guard';
-import { DetailsComponent } from './dashboard/details/details.component';
-import { DashboardMobileComponent } from './dashboard-mobile/dashboard-mobile.component';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { QuotesComponent } from './admin/quotes/quotes.component';
@@ -43,7 +40,6 @@ import { InviteComponent } from './admin/invite/invite.component';
 		DashboardComponent,
 		GoalsComponent,
 		ProfileCardComponent,
-		LoginComponent,
 		SignupComponent,
 		SigninComponent,
 		ProfileComponent,
@@ -52,8 +48,6 @@ import { InviteComponent } from './admin/invite/invite.component';
 		CheckInViewComponent,
 		GraphComponent,
 		LearnComponent,
-		DetailsComponent,
-		DashboardMobileComponent,
 		AdminComponent,
 		UsersComponent,
 		QuotesComponent,
