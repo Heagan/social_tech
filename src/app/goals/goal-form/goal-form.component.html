@@ -10,8 +10,8 @@
 				<div class=row>
 					<span class="col" style="top: 20px">Parent Goal:</span>
 					<mat-form-field class="col">
-						<mat-select matNativeControl required [(value)]="parent" [ngModel]="parent" (ngModelChange)="goal_create.parent_goal_id = getNum(parent); log(goal_create.parent_goal_id)">
-							<mat-option>None</mat-option>
+						<mat-select matNativeControl [(value)]="parent" [ngModel]="parent" (ngModelChange)="goal_create.parent_goal_id = getNum(parent); log(goal_create.parent_goal_id)">
+							<mat-option [value]="getNull()">None</mat-option>
 							<mat-option *ngFor="let goal of getGoals()" [value]="goal.info.goal_id">{{goal.info.goal_title}}</mat-option>
 						</mat-select>
 					</mat-form-field>

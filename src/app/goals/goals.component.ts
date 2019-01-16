@@ -37,7 +37,7 @@ export class GoalsComponent implements OnInit {
 
 	setUpGoalChildren() {
 		console.log("setUpGoalChildren");
-		
+
 		for (var goal of this.goals) {
 			goal.children = this.getComFromId(goal.info.goal_id);
 		}
@@ -45,7 +45,7 @@ export class GoalsComponent implements OnInit {
 
 	getCommitments() {
 		console.log("getCommitments");
-		
+
 		var goalInfo: GoalInfoReturn[];
 		var comGoalInfo: CompletedGoalInfoReturn[];
 		this.goals = new Array;
@@ -63,16 +63,16 @@ export class GoalsComponent implements OnInit {
 					for (var info of goalInfo) {
 						//empty array
 						var comArray = new Array();
-						
+
 						//for each goal detail
 						if (comGoalInfo)
-						for (var com of comGoalInfo) {
-							// if goal detail belongs to goal
-							if (com.goal_id == info.goal_id) {
-								//add to array
-								comArray.push(com);
+							for (var com of comGoalInfo) {
+								// if goal detail belongs to goal
+								if (com.goal_id == info.goal_id) {
+									//add to array
+									comArray.push(com);
+								}
 							}
-						}
 						//make a goal class with the goal, and its detail goals
 						this.goals.push(new Goal(info, comArray));
 					}
@@ -86,14 +86,15 @@ export class GoalsComponent implements OnInit {
 
 	getComFromId(id: number): Goal[] {
 		console.log("getComFromId");
-		
+
 		var comms: Goal[] = new Array();
 
 		for (var idx in this.goals) {
 			var comm = this.goals[idx];
-			if (comm.info.parent_goal_id == id) {
-				comms.push(comm);
-			}
+			if (comm.info.parent_goal_id)
+				if (comm.info.parent_goal_id == id) {
+					comms.push(comm);
+				}
 		}
 		return comms;
 	}

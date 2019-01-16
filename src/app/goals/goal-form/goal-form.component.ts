@@ -41,6 +41,10 @@ export class GoalFormComponent implements OnInit {
 		return Number(s);
 	}
 
+	getNull() {
+		return undefined;
+	}
+
 	addGoal() {
 		parseInt(this.parent);
 		console.log(this.goal_create);

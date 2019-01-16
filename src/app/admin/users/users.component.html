@@ -45,13 +45,13 @@
 
 		</div>
 		<div #Goals class="tabcontent" style="background-color:#ddd;">
-			<h2>Goals<button (click)="showNewGoalForm = true">Add Goal</button></h2>
+			<h2>Goals<button (click)="showNewGoalForm = true" *ngIf="!showNewGoalForm">Add Goal</button><button (click)="showNewGoalForm = false" *ngIf="showNewGoalForm">Close</button></h2>
 			<div *ngIf="showNewGoalForm">
 				<app-goal-form></app-goal-form>
 			</div>
 			<ul id="myMenu2">
-				<li *ngFor="let goal of api.goalsInfo; let i = index;" [hidden]="goal?.goal.parent_goal_id">
-					<span>{{goal?.goal.goal_title}}</span>
+				<li *ngFor="let goal of api.goalsInfo; let i = index;" [hidden]="goal?.info?.parent_goal_id">
+					<span>{{goal?.info?.goal_title}}</span>
 				</li>
 			</ul>
 		</div>
