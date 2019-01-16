@@ -1,3 +1,18 @@
+.eftpic {
+	width: 15%;
+    left: 5px;
+    top: 10%;
+    position: absolute;
+}
+
+.ightpic {
+	width: 15%;
+    right: 5px;
+    top: 10%;
+    position: absolute;
+}
+
+
 body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;

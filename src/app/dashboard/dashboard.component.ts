@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
 			res => {
 				if (res) {
 					this.exp = res.exp_points;
-					console.log("Ex: " + this.exp);
+					console.log("Experence points: " + this.exp);
 				}
 			}
 		);
@@ -118,6 +118,33 @@ export class DashboardComponent implements OnInit {
 
 	newMessage() {
 		this.api.refreshMotivMess();
+	}
+
+	getLeftImage() {
+		this.user = this.api.getUser();
+		this.user.subscribe(
+			res => {
+				if (res) {
+					this.exp = res.exp_points;
+					var n = 1 + (this.exp - (this.exp % 1000) / 1000);
+					return '../../assets/pictures/flower/' + n + '.png';
+				}
+			}
+		);
+	}
+
+	getRightImage() {
+		this.user = this.api.getUser();
+		this.user.subscribe(
+			res => {
+				if (res) {
+					this.exp = res.exp_points;
+					var n = 2 + (this.exp - (this.exp % 1000) / 1000);
+					n = n % 7;
+					return '../../assets/pictures/flower/' + n + '.png';
+				}
+			}
+		);
 	}
 
 }

@@ -76,13 +76,15 @@
 				</a>
 
 				<h2 *ngIf="quote" class="glow-red expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user |
-					async)?.data.exp_points %
-					1000)) / 1000}} Weeb!</h2>
+					async)?.data.exp_points % 1000)) / 1000}} Weeb!</h2>
+					<img class="col-12 eftpic" *ngIf="quote" [src]="'../../assets/pictures/flower/' + (1 + ((user | async)?.data.exp_points - ((user | async)?.data.exp_points % 1000)) / 1000) + '.png'">
 				<ngb-progressbar *ngIf="quote" [value]="(api.getUser() | async)?.data?.exp_points % 1000" type="info" class="expbar"></ngb-progressbar>
+					<img class="col-12 ightpic" *ngIf="quote" [src]="'../../assets/pictures/flower/' + (2 + ((user | async)?.data.exp_points - ((user | async)?.data.exp_points % 1000)) / 1000) + '.png'">
 				<p *ngIf="quote" class="glow-blue expbar_text">
 					{{(user | async)?.data.exp_points % 1000}} / 1000
 					{{exp}}
 				</p>
+
 
 				<button class="btn-primary" style="width: 100%;  top: 64px; position: absolute; left:0;" *ngIf="!quote" (click)="quote = !quote">
 					<mat-icon>expand_more</mat-icon>
