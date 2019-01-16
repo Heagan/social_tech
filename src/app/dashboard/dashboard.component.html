@@ -20,6 +20,9 @@
 				<mat-icon navbar style="font-size: 36px;">school</mat-icon>
 				Learn
 			</a>
+			<a [ngClass]="{'button': true, 'active': page == 'learn', 'ish': true }" (click)="showAchievement = !showAchievement; playAudio();">
+				Achievement
+			</a>
 		</div>
 
 		<div [ngClass]="{'dash': quote}">
@@ -102,6 +105,9 @@
 
 </div>
 
+<div *ngIf="showAchievement" class="con"><app-particles></app-particles></div>
 <div class="container-fluid sup-page-container">
 	<router-outlet></router-outlet>
 </div>
+
+<img (click)="showAchievement = false" src="/../assets/pictures/achievement_with_text_stars.png" [ngClass]="{'achi': true, 'open': showAchievement}">

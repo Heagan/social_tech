@@ -280,9 +280,6 @@ export class APIService {
 		this.getGoalsFromDB().subscribe(
 			res => {
 				this.goalsSource.next(<GoalInfoReturn[]>res.data);
-				console.log("Got the goals -----------------------");
-				console.log(res.data);
-
 				this.getCompletedGoalFromDB().subscribe(
 					res => {
 						console.log("Got the com goals");

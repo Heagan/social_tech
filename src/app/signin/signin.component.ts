@@ -29,8 +29,6 @@ export class SigninComponent implements OnInit {
 	private tryLogin(login: Observable<DefaultReturn>) {
 		console.log("Logging in");
 
-
-
 		this.loading = true;
 		login.subscribe(
 			res => {
@@ -41,6 +39,8 @@ export class SigninComponent implements OnInit {
 			error => {
 				this.error = error;
 				this.loading = false;
+				localStorage.setItem('token', undefined);
+				
 			},
 			() => {
 				console.log("Logged " + this.api.loginInfo);

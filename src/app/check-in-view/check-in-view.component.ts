@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { CheckinReturn } from '../models/api-models';
 import { Injectable } from '@angular/core';
 import { APIService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -20,16 +21,10 @@ export class CheckInViewComponent implements OnInit {
 
 	public answers: CheckinReturn = new CheckinReturn;
 
-	constructor(public api: APIService) { }
+	constructor(public api: APIService, public router: Router) { }
 
 	ngOnInit() {
 		this.answers.q3 = "Joy";
-	}
-
-	dis() {
-		for (var a in this.answers) {
-			console.log(a + " = " + this.answers[a]);
-		}
 	}
 
 	submit() {

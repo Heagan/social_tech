@@ -107,4 +107,21 @@ export class Goal {
 
 	public collapse: boolean = false;
 	public children: Goal[] = new Array();
+
+	getCom(): boolean {
+		if (this.children.length == 0) {
+			return this.info.complete;
+		}
+		for (var g of this.children) {
+			if (g.info.complete == false) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	setCom(b: boolean) {
+		this.info.complete = b;
+	}
+
 }

@@ -30,6 +30,8 @@ import { QuotesComponent } from './admin/quotes/quotes.component';
 import { LcentreComponent } from './admin/lcentre/lcentre.component';
 import { GoalFormComponent } from './goals/goal-form/goal-form.component';
 import { InviteComponent } from './admin/invite/invite.component';
+import { ParticlesComponent } from './particles/particles.component';
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
 	declarations: [
@@ -51,6 +53,7 @@ import { InviteComponent } from './admin/invite/invite.component';
 		LcentreComponent,
 		GoalFormComponent,
 		InviteComponent,
+		ParticlesComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -63,6 +66,7 @@ import { InviteComponent } from './admin/invite/invite.component';
 		ChartsModule,
 		NgbModule,
 		DpDatePickerModule,
+		ParticlesModule,
 	],
 	entryComponents: [],
 	providers: [NeedAuthGuard],

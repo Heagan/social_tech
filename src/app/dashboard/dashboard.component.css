@@ -1,29 +1,46 @@
+.achi {
+	position: absolute;
+	width: 0%;
+	left: 25%;
+	bottom: 0;
+	transition: .5s ease;
+}
+
+.con {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+}
+
+.achi.open {
+	z-index: 20;
+	width: 50%;
+}
+
 .eftpic {
     width: 170px;
     left: 20px;
-    top: 10%;
+    top: -15%;
     position: absolute;
 }
 
 .ightpic {
 	width: 170px;
     right: 20px;
-    top: 10%;
+    top: -15%;
     position: absolute;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
 	.eftpic {
-		width: 15%;
 		left: 5px;
-		top: 35%;
+		top: 20%;
 		position: absolute;
 	}
 	
 	.ightpic {
-		width: 15%;
 		right: 5px;
-		top: 35%;
+		top: 20%;
 		position: absolute;
 	}
 }

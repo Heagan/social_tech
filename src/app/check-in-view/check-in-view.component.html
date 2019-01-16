@@ -126,15 +126,15 @@
 	<mat-card-subtitle>
 		Couching Session
 	</mat-card-subtitle>
-	<mat-card>
+	<mat-card style="background: transparent">
 		What results do you want to take away from todays session?
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
 		#q19 (keyup)="answers.q19 = q19.value"></textarea>
 	</mat-card>
 	<br>
-	<mat-card>
+	<mat-card style="background: transparent">
 		Couching Content:
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
 		#q20 (keyup)="answers.q20 = q20.value"></textarea>
 	</mat-card>
 	<br>
@@ -150,33 +150,33 @@
 		<br>
 		Assignments/Commitments should be IMT and 20% out of the comfort zone
 	</mat-card-subtitle>
-	<mat-card>
+	<mat-card style="background: transparent">
 		Creation Question:
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4"
 		#q21 (keyup)="answers.q21 = q21.value"></textarea>
 	</mat-card>
 	<br>
-	<mat-card>
+	<mat-card style="background: transparent">
 		Support for the Mind:
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4"
 		#q22 (keyup)="answers.q22 = q22.value"></textarea>
 	</mat-card>
 	<br>
-	<mat-card>
+	<mat-card style="background: transparent">
 		Support for the Body:
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4"
 		#q23 (keyup)="answers.q23 = q23.value"></textarea>
 	</mat-card>
 	<br>
-	<mat-card>
+	<mat-card style="background: transparent">
 		Top Priority:
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4"
 		#q24 (keyup)="answers.q24 = q24.value"></textarea>
 	</mat-card>
 	<br>
-	<mat-card>
+	<mat-card style="background: transparent">
 		Personal Promise:
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4"
 		#q25 (keyup)="answers.q25 = q25.value"></textarea>
 	</mat-card>
 	<br>
@@ -192,13 +192,13 @@
 		Review your info then submit
 	</mat-card-subtitle>
 	<br>
-	<mat-card>
+	<mat-card style="background: transparent">
 		Is there anything you'd like your coach to hold you accountable for?
-		<textarea placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+		<textarea style="width: 100%;" placeholder="" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
 		#q26 (keyup)="answers.q26 = q26.value"></textarea>
 	</mat-card>
 	<br>
-	<a class="btn btn-primary" (click)="dis(); submit();">
+	<a class="btn btn-primary" (click)="router.navigateByUrl('home'); submit();">
 		Submit
 	</a>
 </mat-card>
