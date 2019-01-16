@@ -34,6 +34,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { QuotesComponent } from './admin/quotes/quotes.component';
 import { LcentreComponent } from './admin/lcentre/lcentre.component';
 import { GoalFormComponent } from './goals/goal-form/goal-form.component';
+import { InviteComponent } from './admin/invite/invite.component';
 
 @NgModule({
 	declarations: [
@@ -58,6 +59,7 @@ import { GoalFormComponent } from './goals/goal-form/goal-form.component';
 		QuotesComponent,
 		LcentreComponent,
 		GoalFormComponent,
+		InviteComponent,
 	],
 	imports: [
 		BrowserModule,

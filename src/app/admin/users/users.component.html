@@ -39,12 +39,18 @@
 			<p>Email: {{selUser?.email}}</p>
 			<p>Experience points: {{selUser?.exp_points}}</p>
 			<p>Type: {{groupUser()}}</p>
+			<input type="text" id="mySearch" #Noti placeholder="Send them a notification">
+			<button mat-raised-button (click)="addNoti(Noti.value); sentNoti = true" class="col-1">Send</button>
+			<span *ngIf="sentNoti" class="col-1">Sent user notification!</span>
 
 		</div>
 		<div #Goals class="tabcontent" style="background-color:#ddd;">
-			<h2>Goals</h2>
+			<h2>Goals<button (click)="showNewGoalForm = true">Add Goal</button></h2>
+			<div *ngIf="showNewGoalForm">
+				<app-goal-form></app-goal-form>
+			</div>
 			<ul id="myMenu2">
-				<li *ngFor="let goal of api.goalsInfo; let i = index;">
+				<li *ngFor="let goal of api.goalsInfo; let i = index;" [hidden]="goal?.goal.parent_goal_id">
 					<span>{{goal?.goal.goal_title}}</span>
 				</li>
 			</ul>

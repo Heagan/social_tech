@@ -1,0 +1,141 @@
+.row {
+	/* display: flex; */
+	padding: 5px;
+	position: relative;
+}
+
+/* Left column (menu) */
+
+.left {
+	flex: 35%;
+	padding: 15px 0;
+}
+
+.left h2 {
+	padding-left: 8px;
+}
+
+/* Right column (page content) */
+
+.right {
+	flex: 65%;
+	padding: 15px;
+}
+
+/* Style the search box */
+
+#mySearch {
+	width: 100%;
+	font-size: 18px;
+	padding: 11px;
+	border: 1px solid #ddd;
+}
+
+/* Style the navigation menu inside the left column */
+
+.side {
+	height: 100vh;
+	background-color: #bbb;
+}
+
+.bar {
+	background-color: #bbb;
+	display: contents;
+}
+
+#myMenu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 2em 0;
+}
+
+#myMenu li a {
+	background-color: #f6f6f6;
+	text-decoration: none;
+	font-size: 18px;
+	color: black;
+	display: block
+}
+
+#myMenu li a:hover {
+	background-color: #eee;
+}
+
+/* Style the tab */
+
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+
+.tab button:hover {
+	background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+
+.tab button.active {
+	background-color: #ccc;
+}
+
+/* Style the tab content */
+
+.tabcontent {
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	display: none;
+	background: #ccc;
+}
+
+.child-right {
+	background: green;
+	height: 100%;
+	width: 50%;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+li {
+	cursor: pointer;
+	/* position: relative; */
+	left: 0;
+	background-color: #EEE;
+	margin: .5em;
+	padding: .3em 0;
+	/* height: 1.6em; */
+	border-radius: 4px;
+}
+
+li.selected:hover {
+	background-color: #BBD8DC !important;
+	color: white;
+}
+
+li:hover {
+	color: #607D8B;
+	background-color: #DDD;
+	left: .1em;
+}
+
+.users-list {
+	/* width: 300px; */
+	/* height: 200px; */
+	overflow: auto;
+}

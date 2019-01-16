@@ -23,6 +23,8 @@ export class UsersComponent implements OnInit {
 
 	searchBy = 'Name';
 	selUser: UserFields;
+	showNewGoalForm: boolean = false;
+	sentNoti: boolean = false;
 
 	constructor(public api: APIService, public goalsComponent: GoalsComponent) { }
 
@@ -30,6 +32,15 @@ export class UsersComponent implements OnInit {
 		this.api.getAllUsersFromDB().subscribe(
 			res => {
 				this.users = res.data;
+			}
+		);
+	}
+
+	addNoti(noti: string) {
+		this.api.addNotification(this.selUser.user_id, noti).subscribe(
+			res => {
+				console.log(res.success);
+				console.log(res.message);
 			}
 		);
 	}
@@ -68,10 +79,6 @@ export class UsersComponent implements OnInit {
 			},
 			error => console.error(error)
 		);
-	}
-
-	log(log) {
-		console.log(log);
 	}
 
 	search() {

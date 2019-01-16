@@ -42,6 +42,7 @@ export class APIService {
 	public createNotiUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notifications/create"; //user_id, notification, time_date
 	public setNotiSeenUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notifications/set_as_seen/" //:id
 
+	public sendInviteLinkUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/admin/invite"
 	public signUpUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/signup" // first_name, last_name, user_password, phone_number, v_token, email, user_group_id
 	public signupVerifyUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/verify/";
 
@@ -80,6 +81,10 @@ export class APIService {
 	public loginInfo: LoginReturnDetails;
 
 	constructor(public http: HttpClient) { }
+
+	public inviteUser(email: string, type: number) {
+		return this.http.post<DefaultReturn>(this.sendInviteLinkUrl, {email: email, user_group_id: type});
+	}
 
 	public isLoggedIn(): boolean {
 		if (this.loginInfo)
@@ -124,8 +129,10 @@ export class APIService {
 		);
 	}
 
-	public addNotification() {
-		
+	public addNotification(user_id: number, notification: string) {
+		var date: string = formatDate(Date.now(), 'medium', 'en-US');
+		console.log("Sending notification to user");
+		return this.http.post<DefaultReturn>(this.createNotiUrl, {user_id: user_id, notification: notification, time_date: date});
 	}
 
 	public getAllUsersFromDB(): Observable<DefaultReturn> {

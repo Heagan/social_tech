@@ -42,7 +42,7 @@
 						<span>Mark all as read</span>
 					</button>
 
-					<div *ngFor="let not of nofication | async">
+					<div *ngFor="let not of getNotiList()">
 						<button mat-menu-item [ngClass]="{'seen': not.seen}" (click)="not.seen = true; api.setNotiAsSeen(not.id)">
 							<span>{{not.notification}}</span>
 						</button>

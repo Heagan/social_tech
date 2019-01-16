@@ -55,6 +55,27 @@ export class DashboardComponent implements OnInit {
 			)
 	}
 
+	getNotiList() {
+		var notis = new Array();
+
+		if (this.nofication)
+			this.nofication.subscribe(
+				res => {
+					if (res)
+						for (var n of res) {
+							if (n.seen) {
+								notis.push(n);
+							} else {
+								notis.reverse();
+								notis.push(n);
+								notis.reverse();
+							}
+						}
+				}
+			)
+		return notis;
+	}
+
 	getNotiCount() {
 		if (this.nofication)
 			this.nofication.subscribe(
