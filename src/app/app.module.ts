@@ -16,7 +16,6 @@ import { GoalsComponent } from './goals/goals.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
-import { ProfileComponent } from './profile/profile.component';
 import { NotesComponent } from './notes/notes.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +23,6 @@ import { TodaysActivityViewComponent } from './home/todays-activity-view/todays-
 import { CheckInViewComponent } from './check-in-view/check-in-view.component';
 import { GraphComponent } from './home/graph/graph.component';
 import { LearnComponent } from './learn/learn.component';
-import { APIService } from './api.service';
 import { NeedAuthGuard } from './auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
@@ -42,7 +40,6 @@ import { InviteComponent } from './admin/invite/invite.component';
 		ProfileCardComponent,
 		SignupComponent,
 		SigninComponent,
-		ProfileComponent,
 		NotesComponent,
 		TodaysActivityViewComponent,
 		CheckInViewComponent,

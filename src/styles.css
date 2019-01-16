@@ -21,6 +21,10 @@
 	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(20, 20, 20), 0 0 3px #686868, 0 0 4px #a0a0a0, 0 0 5px #cacaca, 0 0 6px #f1f1f1, 0 0 7px #ffffff;
 }
 
+.glow-white {
+	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(20, 20, 20), 0 0 3px #686868, 0 0 4px #a0a0a0, 0 0 5px #cacaca, 0 0 6px #f1f1f1, 0 0 7px #ffffff;
+}
+
 #bordering {
 	border: 10px transparent;
 	padding: 15px;

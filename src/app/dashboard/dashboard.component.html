@@ -75,7 +75,7 @@
 					{{(motivMess | async)?.description}}
 				</a>
 
-				<h2 *ngIf="quote" class="glow-red expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user |
+				<h2 *ngIf="quote" class="glow-white expbar_lvl">Lvl {{((user | async)?.data.exp_points - ((user |
 					async)?.data.exp_points % 1000)) / 1000}} Weeb!</h2>
 					<img class="col-12 eftpic" *ngIf="quote" [src]="'../../assets/pictures/flower/' + (1 + ((user | async)?.data.exp_points - ((user | async)?.data.exp_points % 1000)) / 1000) + '.png'">
 				<ngb-progressbar *ngIf="quote" [value]="(api.getUser() | async)?.data?.exp_points % 1000" type="info" class="expbar"></ngb-progressbar>
