@@ -5,10 +5,9 @@ import { NgClass } from '@angular/common';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-import { APIService } from '../api.service';
 import { GoalInfoReturn, CompletedGoalInfoReturn } from '../models/api-models';
 import { Observable } from 'rxjs';
-import { log } from 'util';
+import { APIService } from '../api.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -40,7 +39,7 @@ export class GoalsComponent implements OnInit {
 		console.log("setUpGoalChildren");
 		
 		for (var goal of this.goals) {
-			goal.children = this.getComFromId(goal.goal.goal_id);
+			goal.children = this.getComFromId(goal.info.goal_id);
 		}
 	}
 
@@ -64,8 +63,9 @@ export class GoalsComponent implements OnInit {
 					for (var info of goalInfo) {
 						//empty array
 						var comArray = new Array();
-
+						
 						//for each goal detail
+						if (comGoalInfo)
 						for (var com of comGoalInfo) {
 							// if goal detail belongs to goal
 							if (com.goal_id == info.goal_id) {
@@ -91,7 +91,7 @@ export class GoalsComponent implements OnInit {
 
 		for (var idx in this.goals) {
 			var comm = this.goals[idx];
-			if (comm.goal.parent_goal_id == id) {
+			if (comm.info.parent_goal_id == id) {
 				comms.push(comm);
 			}
 		}
@@ -102,13 +102,8 @@ export class GoalsComponent implements OnInit {
 
 export class Goal {
 
-	constructor(public goal: GoalInfoReturn, public complete: CompletedGoalInfoReturn[]) { };
+	constructor(public info: GoalInfoReturn, public progress: CompletedGoalInfoReturn[]) { };
 
 	public collapse: boolean = false;
 	public children: Goal[] = new Array();
-	public completed: boolean = false;
-
-	isComplete(): boolean {
-		return this.completed;
-	}
 }

@@ -20,23 +20,24 @@
 
 <div *ngIf="goals">
 	<div *ngFor="let goal of goals">
-		<div class="card" *ngIf="!goal.goal.parent_goal_id" style="background: transparent;">
+		<div class="card" *ngIf="!goal.info.parent_goal_id" style="background: transparent;">
 
 			<div class=row>
-				<button mat-raised-button [ngClass]="{'col': true, 'collapsible': true, 'goal': goal.children.length > 0, 'com': goal.isComplete()}"
-				 (click)="goal.collapse = !goal.collapse"> {{goal.goal.goal_title}}</button>
-				<button class="col-1" mat-icon-button color="warn" (click)="goal.completed = !goal.completed">
+				<button mat-raised-button [ngClass]="{'col': true, 'collapsible': true, 'goal': goal.children.length > 0, 'com': goal.info.complete}"
+				 (click)="goal.collapse = !goal.collapse"> {{goal.info.goal_title}}</button>
+				<button class="col-1" mat-raised-button (click)="goal.info.completed = !goal.info.completed">
 					<mat-icon>check_box</mat-icon>
 				</button>
 			</div>
 
 			<div *ngIf="goal.collapse">
 
-				<div class=row *ngFor="let com of goal.children">
-					<button mat-raised-button [ngClass]="{'col': true, 'collapsible': true, 'goal': goal?.children.length > 0, 'com': goal?.isComplete()}"
-					 (click)="goal.collapse = !goal.collapse">{{com.goal.goal_title}}</button>
-					<button class="col-1" mat-icon-button color="warn">
-						<mat-icon>check_box</mat-icon>
+				<div class=row *ngFor="let child of goal.children">
+					<button mat-raised-button [ngClass]="{'col': true, 'collapsible': true, 'goal': child?.children?.length > 0, 'com': child.info.complete}">
+						{{child.info.goal_title}}
+					</button>
+					<button class="col-1" mat-raised-button (click)="child.info.completed = !child.info.completed">
+						<mat-icon >check_box</mat-icon>
 					</button>
 				</div>
 
@@ -44,7 +45,7 @@
 
 
 		</div>
-		<div id="sp" *ngIf="!goal.goal.parent_goal_id"></div>
+		<div id="sp" *ngIf="!goal.info.parent_goal_id"></div>
 	</div>
 </div>
 <div id="sp-50"></div>

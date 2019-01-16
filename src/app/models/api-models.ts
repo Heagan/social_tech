@@ -39,20 +39,33 @@ export interface CompletedGoalInfoReturn {
 	satisfaction: number;
 }
 
-export interface GoalInfoReturn {
-	goal_id: number;
-	goal_title: string;
-	goal_description: string;
-	start_date: string;
-	end_date: string;
-	start_time: string;
-	end_time: string;
-	is_full_day: boolean;
-	is_recurring: boolean;
-	user_id: number;
-	created_by: number;
-	created_date: string;
-	parent_goal_id: number;
+export class GoalInfoReturn {
+	goal_id: number = undefined;
+	goal_title: string = "";
+	goal_description: string = "";
+	start_date: string = "";
+	end_date: string = "";
+	start_time: string = "";
+	end_time: string = "";
+	is_full_day: boolean = false;
+	is_recurring: boolean = false;
+	user_id: number = 0;
+	created_by: number = 0;
+	created_date: string = "";
+	parent_goal_id: number = undefined;
+	difficulty: number = 1;
+	active: boolean = false;
+	complete: boolean = false;
+	recurring_type: string = "Daily";
+	separation_count: number = 0;
+	max_occurrence: number = 0;
+	hour_of_day: number = 0;
+	day_of_week: number = 0;
+	day_of_month: number = 0;
+	day_of_year: number = 0;
+	week_of_month: number = 0;
+	week_of_year: number = 0;
+	month_of_year: number = 0;
 }
 export interface MotivMessReturn {
 	id: number;

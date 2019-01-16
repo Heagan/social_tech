@@ -48,10 +48,14 @@ export class APIService {
 
 	public checkinUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/checkins";
 	public motivMessUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/motivational_r";
+
 	public goalsCompletedUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/completed_commitments/";
 	public goalsUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/commitments/";
+
 	public notesUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/notes/";
+
 	public usersUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/users/";
+
 	public loginUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/login";
 	public loginWithTokenUrl = "https://smile-coaching-platform-dev.herokuapp.com/api/token_login";
 
@@ -216,11 +220,25 @@ export class APIService {
 		);
 	}
 
+
+	public addGoal(goal: GoalInfoReturn): Observable<DefaultReturn> {
+		console.log("Adding Goal note ");
+		goal.created_date = formatDate(Date.now(), 'medium', 'en-US');
+		goal.created_by = this.loginInfo.user_id;
+		goal.user_id =  this.loginInfo.user_id;
+		return this.http.post<DefaultReturn>(this.goalsUrl, goal).pipe(
+			retry(3),
+			catchError(this.errorHandler)
+		);
+
+	}
+
 	public addNote(note: string): Observable<DefaultReturn> {
 		console.log("API Says: Adding New note " + note);
 		var date: string = formatDate(Date.now(), 'medium', 'en-US');
 		var user_id: number = this.loginInfo.user_id;
-
+		console.log(date);
+		
 		return this.http.post<DefaultReturn>(this.notesUrl, { user_id: user_id, note: note, date_created: date }).pipe(
 			retry(3),
 			catchError(this.errorHandler)

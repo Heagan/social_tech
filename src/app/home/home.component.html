@@ -1,7 +1,8 @@
 <div class="card">
 	<h2>Check-in questions</h2>
-	<textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" placeholder="Note" (click)="newMessage()">{{message}}</textarea>
-	<button class="btn-primary">Add Note</button>
+	<textarea cdkTextareaAutosize #Note #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" placeholder="Note"></textarea>
+	<button class="btn-primary" (click)="addNote(Note.value); ">Add Note</button>
+	<span *ngIf="message">Note Added</span>
 	<a matRipple (click)="router.navigateByUrl('checkin')" class="btn btn-primary">Check-in</a>
 </div>
 <div id="sp-10"></div>
@@ -10,7 +11,6 @@
 <div id="sp-10"></div>
 <div class='card'>
 	<a matRipple (click)="router.navigateByUrl('admin')" class="btn btn-primary">Admin Page</a>
-	<button (click)="da('a')">Date</button>
 	<p>
 		<ngb-progressbar type="success" [value]="25"></ngb-progressbar>
 	</p>

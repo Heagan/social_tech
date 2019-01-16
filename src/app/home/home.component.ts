@@ -15,7 +15,7 @@ import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit {
 
-	message: string;
+	message: boolean = false;
 
 	constructor(public api: APIService, public router: Router, config: NgbProgressbarConfig) {
 		// customize default values of progress bars used by this component tree
@@ -27,18 +27,24 @@ export class HomeComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.api.currentMessage.subscribe(message => this.message = message);
 	}
 
-	newMessage() {
-		console.log("HELLO!");
-		this.api.changeMessage("Hello from Sibling")
-	}
-
-	day = formatDate(Date(), "MMM d, y", "en-US");
-	time = formatDate(Date(), "h:mm:ss", "en-US");
-	da(ada) {
-		console.log(this.day + " at " + this.time);
+	addNote(note: string) {
+		if (note.length < 5) {
+			return;
+		}
+		console.log("Adding New note " + note);
+		this.api.addNote(note).subscribe(
+			res => {
+				console.log(res.success);
+				console.log(res.message);
+				this.message = true;
+				this.api.refreshNotes();
+			},
+			error => {
+				console.error("There was an error while trying to add note?\n" + error);
+			}
+		);
 	}
 
 }
