@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { UserFields, MotivMessReturn, NotiReturn } from '../models/api-models';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 
 @Injectable({
 	providedIn: 'root'
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
 	playAudio() {
 		this.sound.play();
 	}
-	
+
 	constructor(public api: APIService, public router: Router, expBar: NgbProgressbarConfig) {
 		expBar.max = 1000;
 		expBar.striped = true;

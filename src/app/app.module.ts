@@ -32,6 +32,7 @@ import { GoalFormComponent } from './goals/goal-form/goal-form.component';
 import { InviteComponent } from './admin/invite/invite.component';
 import { ParticlesComponent } from './particles/particles.component';
 import { ParticlesModule } from 'angular-particle';
+import { JournalComponent } from './journal/journal.component';
 
 @NgModule({
 	declarations: [
@@ -54,6 +55,7 @@ import { ParticlesModule } from 'angular-particle';
 		GoalFormComponent,
 		InviteComponent,
 		ParticlesComponent,
+		JournalComponent,
 	],
 	imports: [
 		BrowserModule,

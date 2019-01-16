@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { formatDate } from '@angular/common';
 
 import { Goal } from './goals/goals.component';
+import { Howl } from 'howler';
 
 import {
 	HttpClient,
@@ -85,6 +86,16 @@ export class APIService {
 	public loginInfo: LoginReturnDetails;
 
 	constructor(public http: HttpClient) { }
+
+	// whys this here?
+	// last minute decision
+	sound = new Howl({
+		src: ["../../assets/achive.wav"]
+	});
+	public playAudio() {
+		this.sound.play();
+	}
+
 
 	public inviteUser(email: string, type: number) {
 		return this.http.post<DefaultReturn>(this.sendInviteLinkUrl, {email: email, user_group_id: type});

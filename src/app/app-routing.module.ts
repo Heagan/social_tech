@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { NeedAuthGuard } from './auth.guard';
+import { JournalComponent } from './journal/journal.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
 	{ path: 'goals', component: GoalsComponent, canActivate: [NeedAuthGuard]  },
 	{ path: 'profile', component: ProfileCardComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'checkin', component: CheckInViewComponent, canActivate: [NeedAuthGuard] },
+	{ path: 'journal', component: JournalComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'learn', component: LearnComponent, canActivate: [NeedAuthGuard] },
 	{ path: 'admin', component: AdminComponent, canActivate: [NeedAuthGuard] },
 ];
