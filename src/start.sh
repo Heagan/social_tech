@@ -1,1 +1,0 @@
-ng serve -o --host 0.0.0.0 & npm start --prefix ../../API

@@ -1,8 +1,0 @@
-<div class="card">
-	<div style="background: white; display: block;">
-		<canvas baseChart width="$('#parent').width()" height="100%" [datasets]="lineChartData" [labels]="lineChartLabels"
-		 [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
-		 (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-	</div>
-	<button class="btn-primary" (click)="randomize()">Randomize</button>
-</div>
