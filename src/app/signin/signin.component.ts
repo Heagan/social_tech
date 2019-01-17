@@ -40,7 +40,7 @@ export class SigninComponent implements OnInit {
 				this.error = error;
 				this.loading = false;
 				localStorage.setItem('token', undefined);
-				
+				this.show = true;
 			},
 			() => {
 				console.log("Logged " + this.api.loginInfo);
@@ -53,7 +53,8 @@ export class SigninComponent implements OnInit {
 					} else {
 						this.router.navigateByUrl('/home');
 					}
-
+				} else {
+					this.show = true;
 				}
 				this.loading = false;
 			}
