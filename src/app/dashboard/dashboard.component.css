@@ -20,14 +20,14 @@
 .eftpic {
     width: 170px;
     left: 20px;
-    top: -15%;
+    top: 5%;
     position: absolute;
 }
 
 .ightpic {
 	width: 170px;
     right: 20px;
-    top: -15%;
+    top: 5%;
     position: absolute;
 }
 
